@@ -55,17 +55,19 @@
           "query": [
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{API Key}}",
+              "uuid": "e63ba7d0-246e-4141-9443-16d011e8b5c4"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{Token}}",
+              "uuid": "e2e6a878-2b09-437e-b3e5-4ba2f4fe4e37"
             }
           ],
           "variable": [
             {
               "key": "id",
-              "value": "695ece4f1be059f74faf0378"
+              "value": "695ec7af0502ef44a555651c"
             }
           ]
         }
@@ -219,6 +221,83 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Update a card",
+      "id": "e8c9f51c-7ebc-4c62-9ed9-84313894bb44",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/1/cards/696009cf3f071e066cb6949c?idList=69600931cd063c7120e75096&key=%7B%7BAPI%20Key%7D%7D&token=%7B%7BToken%7D%7D",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "cards",
+            "696009cf3f071e066cb6949c"
+          ],
+          "query": [
+            {
+              "key": "idList",
+              "value": "69600931cd063c7120e75096"
+            },
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a board",
+      "id": "caf587b4-a512-4c7c-b3cd-f067c10820e8",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/boards/:id?key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ":id"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API Key}}",
+              "uuid": "6fbc4489-8b8a-4909-97a3-5508a0b85a7d"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}",
+              "uuid": "3611168c-6358-4cf3-8f7b-a1eb5177299d"
+            }
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "695ec7af0502ef44a555651c"
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "auth": {
@@ -238,17 +317,17 @@
   },
   "variable": [
     {
-      "id": "f662be33-8f55-46ed-87d9-bd8ca4f3f155",
+      "id": "edce5cd6-59c7-4171-bc4e-882fbd6ec12f",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "a0839dd0-0de3-49d7-824c-cdb0b7b3f801",
+      "id": "e7b459c7-30b1-41e6-8e75-6b84ab8b5891",
       "key": "API Key",
       "value": ""
     },
     {
-      "id": "1e5d1c75-c793-41ca-9552-262e76a6b2c8",
+      "id": "3dfb3380-6f4a-499e-a333-2c76a37bfb08",
       "key": "Token",
       "value": ""
     }
