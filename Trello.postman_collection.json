@@ -1,0 +1,241 @@
+{
+  "info": {
+    "_postman_id": "f430ae28-9d66-4717-b99c-ab643c9d077d",
+    "name": "Trello",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get all boards",
+      "id": "1765a88f-7c76-4261-96b5-5c93bce80601",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/members/me/boards?key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "members",
+            "me",
+            "boards"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get a board",
+      "id": "18081bf9-d86d-4f9f-9579-6ffb9dd10ac1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/boards/:id?key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ":id"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "695ece4f1be059f74faf0378"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create a board",
+      "id": "6a563918-7ef3-439c-9056-e98923ffb903",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/boards?name=My_First_Board&key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "boards"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "My_First_Board"
+            },
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create a TODO list",
+      "id": "5c327c43-9990-49e7-b702-1252321c0e8e",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/lists?name=TODO&idBoard=695ece4f1be059f74faf0378&key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "TODO"
+            },
+            {
+              "key": "idBoard",
+              "value": "695ece4f1be059f74faf0378"
+            },
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create a DONE list",
+      "id": "5d6323a8-4af8-412b-9f9b-1002b43020fd",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/lists?name=DONE&idBoard=695ece4f1be059f74faf0378&key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "DONE"
+            },
+            {
+              "key": "idBoard",
+              "value": "695ece4f1be059f74faf0378"
+            },
+            {
+              "key": "key",
+              "value": "{{API Key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "285b98af17d05c490f9c632ccf889fb9",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "Trello",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "d34e2796-820c-4de2-9d0d-ed196ea3b244",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "52d42943-5422-4b77-9dfd-5bcce6d7453a",
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "7b975c3b-9f0b-4ea9-ba9b-62ed8a90bfe4",
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "id": "24346fdb-71e3-4265-9a10-5f541f36e8e6",
+      "key": "API Key",
+      "value": ""
+    },
+    {
+      "id": "cd03cde3-6ab3-4176-84d5-d64ce8f5fd52",
+      "key": "Token",
+      "value": ""
+    }
+  ]
+}
