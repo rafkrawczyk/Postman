@@ -178,6 +178,47 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Create a card",
+      "id": "e0f7d1fe-6db3-45e4-b89e-d8be50637979",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/cards?name=Sign-up for Trello&idList=695fe0c0ff368747201cceae&key={{API Key}}&token={{Token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "cards"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Sign-up for Trello",
+              "uuid": "81415c5f-7449-453d-a7f8-cec331eab9ac"
+            },
+            {
+              "key": "idList",
+              "value": "695fe0c0ff368747201cceae",
+              "uuid": "692ef304-9133-4841-842d-2d9a81520a53"
+            },
+            {
+              "key": "key",
+              "value": "{{API Key}}",
+              "uuid": "c151b46e-6102-4ee1-af81-294c72bc18de"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}",
+              "uuid": "33a9bb1f-80a8-4fb4-8fb3-e3e7e30db1d6"
+            }
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "auth": {
@@ -195,45 +236,19 @@
       }
     ]
   },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "id": "d34e2796-820c-4de2-9d0d-ed196ea3b244",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "52d42943-5422-4b77-9dfd-5bcce6d7453a",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
   "variable": [
     {
-      "id": "7b975c3b-9f0b-4ea9-ba9b-62ed8a90bfe4",
+      "id": "f662be33-8f55-46ed-87d9-bd8ca4f3f155",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "24346fdb-71e3-4265-9a10-5f541f36e8e6",
+      "id": "a0839dd0-0de3-49d7-824c-cdb0b7b3f801",
       "key": "API Key",
       "value": ""
     },
     {
-      "id": "cd03cde3-6ab3-4176-84d5-d64ce8f5fd52",
+      "id": "1e5d1c75-c793-41ca-9552-262e76a6b2c8",
       "key": "Token",
       "value": ""
     }
