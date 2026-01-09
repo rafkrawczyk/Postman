@@ -7,6 +7,39 @@
   "item": [
     {
       "name": "API Status",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "c4c500b1-e2eb-4eeb-bae8-248ff77f2a12",
+            "exec": [
+              "console.clear();"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "dceb4f6e-18b8-4b95-b10e-9003252229b9",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "",
+              "pm.test(\"Status = UP\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.status).to.eql(\"UP\");",
+              "});",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "033e8569-c8df-4c94-91c0-7768582a5570",
       "request": {
         "method": "GET",
@@ -508,45 +541,19 @@
       "response": []
     }
   ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "id": "850a476e-ba39-4026-8d0e-f339ab31bf02",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "id": "75921518-af25-4c8e-baf7-254f566151ca",
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
   "variable": [
     {
-      "id": "51446f1c-5d90-4fde-aeab-1f188b3da34f",
+      "id": "b82c77b3-9283-49e0-8309-d05d07452b80",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "e3672934-49e4-4aad-a720-2b86cb67e9d5",
+      "id": "f2582cc3-a5ce-422a-8ccd-95e68a7041e2",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "cb063a1f-db82-4afa-8f00-4a2e41e8f338",
+      "id": "cb83e89a-284f-499d-9f03-e48652f14a01",
       "key": "cartID",
       "value": ""
     }
