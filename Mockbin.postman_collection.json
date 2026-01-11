@@ -27,7 +27,11 @@
             "exec": [
               "const response = pm.response.json();",
               "",
-              "console.log(response[0].Item01.Data[0].Results[0].Contact.Address.PostalCode)"
+              "console.log(response[0].Item01.Data[0].Results[0].Contact.Address.PostalCode)",
+              "",
+              "pm.test(\"Check if the response contains the correct data\", function () {",
+              "        pm.expect(response[0].Item01.Data[0].Results[0].Contact.Address.PostalCode).to.eql(\"12345\");",
+              "    });"
             ],
             "type": "text/javascript",
             "packages": {},
