@@ -11,9 +11,26 @@
         {
           "listen": "prerequest",
           "script": {
-            "id": "c4c500b1-e2eb-4eeb-bae8-248ff77f2a12",
+            "id": "d79faeec-a4d7-486f-a56c-487d6308ac50",
             "exec": [
-              "console.clear();"
+              "console.clear();",
+              "",
+              "const person = {",
+              "    'first name': \"John\",",
+              "    age: 30,",
+              "    city: \"New York\",",
+              "    sayHello: () => 'Hello, my first name is ' + person['first name']",
+              "};",
+              "",
+              "person['e-mail'] = 'john@example.com'",
+              "",
+              "let json = JSON.stringify(person);",
+              "let personNew = JSON.parse(json);",
+              "",
+              "console.log(person.sayHello());",
+              "console.log(person['e-mail']);",
+              "console.log(json);",
+              "console.log(personNew);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -23,7 +40,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "dceb4f6e-18b8-4b95-b10e-9003252229b9",
+            "id": "4b86e3d5-441d-4fa6-bb59-a35c20751151",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
               "    pm.response.to.have.status(200);",
@@ -32,7 +49,15 @@
               "    var jsonData = pm.response.json();",
               "    pm.expect(jsonData.status).to.eql(\"UP\");",
               "});",
-              "});"
+              "});",
+              "",
+              "const response = pm.response.json();",
+              "",
+              "pm.test(\"Status is UP\", () => {",
+              "    pm.expect(response.status).to.eql(\"UP\");",
+              "});",
+              "",
+              "console.log(pm.response.json());"
             ],
             "type": "text/javascript",
             "packages": {},
