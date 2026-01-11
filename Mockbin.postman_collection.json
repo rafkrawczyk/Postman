@@ -1,0 +1,59 @@
+{
+  "info": {
+    "_postman_id": "4db18893-509c-4030-9ced-08755938901b",
+    "name": "Mockbin",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get PostalCode",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "2fec3197-70e7-40d2-968c-7f483c84410a",
+            "exec": [
+              "console.clear();"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "dc89d346-b150-48c9-ae09-82b50608957a",
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "console.log(response[0].Item01.Data[0].Results[0].Contact.Address.PostalCode)"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "449d810c-5f43-40a3-a494-5036cf4868f7",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://cde8bdc4bb9d45de9b1fff00c4118687.api.mockbin.io/",
+          "protocol": "https",
+          "host": [
+            "cde8bdc4bb9d45de9b1fff00c4118687",
+            "api",
+            "mockbin",
+            "io"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
