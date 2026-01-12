@@ -133,6 +133,13 @@
               "key": "results",
               "value": "100",
               "disabled": true
+            },
+            {
+              "key": "available",
+              "value": "false",
+              "type": "text",
+              "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
+              "disabled": true
             }
           ]
         }
@@ -161,6 +168,21 @@
             "exec": [
               "pm.test(\"Status code is 200\", () => {",
               "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Product name\", () => {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response.name).to.eql(\"Don Francisco Colombia Supremo Medium Roast\");",
+              "});",
+              "",
+              "pm.test(\"Product price\", () => {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response.price).to.eql(9.76);",
+              "});",
+              "",
+              "pm.test(\"Product is in stock\", () => {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response.inStock).to.eql(true);",
               "});"
             ],
             "type": "text/javascript",
