@@ -6,985 +6,1144 @@
   },
   "item": [
     {
-      "name": "API Status",
-      "event": [
+      "name": "Happy path",
+      "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "d79faeec-a4d7-486f-a56c-487d6308ac50",
-            "exec": [
-              "console.clear();",
-              "",
-              "const person = {",
-              "    'first name': \"John\",",
-              "    age: 30,",
-              "    city: \"New York\",",
-              "    sayHello: () => 'Hello, my first name is ' + person['first name']",
-              "};",
-              "",
-              "person['e-mail'] = 'john@example.com'",
-              "",
-              "let json = JSON.stringify(person);",
-              "let personNew = JSON.parse(json);",
-              "",
-              "console.log(person.sayHello());",
-              "console.log(person['e-mail']);",
-              "console.log(json);",
-              "console.log(personNew);"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "4b86e3d5-441d-4fa6-bb59-a35c20751151",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "pm.test(\"Status = UP\", function () {",
-              "    var jsonData = pm.response.json();",
-              "    pm.expect(jsonData.status).to.eql(\"UP\");",
-              "});",
-              "",
-              "const response = pm.response.json();",
-              "",
-              "pm.test(\"Status is UP\", () => {",
-              "    pm.expect(response.status).to.eql(\"UP\");",
-              "});",
-              "",
-              "console.log(pm.response.json());"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "033e8569-c8df-4c94-91c0-7768582a5570",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/status",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "status"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get products",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "2c88132a-5975-49da-9023-ff94dae1fe4b",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/products",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "products"
-          ],
-          "query": [
+          "name": "API Status",
+          "event": [
             {
-              "key": "category",
-              "value": "coffee",
-              "disabled": true
+              "listen": "prerequest",
+              "script": {
+                "id": "d79faeec-a4d7-486f-a56c-487d6308ac50",
+                "exec": [
+                  "console.clear();",
+                  "",
+                  "const person = {",
+                  "    'first name': \"John\",",
+                  "    age: 30,",
+                  "    city: \"New York\",",
+                  "    sayHello: () => 'Hello, my first name is ' + person['first name']",
+                  "};",
+                  "",
+                  "person['e-mail'] = 'john@example.com'",
+                  "",
+                  "let json = JSON.stringify(person);",
+                  "let personNew = JSON.parse(json);",
+                  "",
+                  "console.log(person.sayHello());",
+                  "console.log(person['e-mail']);",
+                  "console.log(json);",
+                  "console.log(personNew);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             },
             {
-              "key": "results",
-              "value": "100",
-              "disabled": true
+              "listen": "test",
+              "script": {
+                "id": "4b86e3d5-441d-4fa6-bb59-a35c20751151",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Status = UP\", function () {",
+                  "    var jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.status).to.eql(\"UP\");",
+                  "});",
+                  "",
+                  "const response = pm.response.json();",
+                  "",
+                  "pm.test(\"Status is UP\", () => {",
+                  "    pm.expect(response.status).to.eql(\"UP\");",
+                  "});",
+                  "",
+                  "console.log(pm.response.json());"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "033e8569-c8df-4c94-91c0-7768582a5570",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get products",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             },
             {
-              "key": "available",
-              "value": "false",
-              "type": "text",
-              "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
-              "disabled": true
+              "listen": "test",
+              "script": {
+                "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get single product",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "ac756d87-5d03-4d71-9c72-711527f56c39",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          ],
+          "id": "2c88132a-5975-49da-9023-ff94dae1fe4b",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "coffee",
+                  "disabled": true
+                },
+                {
+                  "key": "results",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "available",
+                  "value": "false",
+                  "type": "text",
+                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "4da7e949-24cc-4999-83ef-2b42ee0bcd2c",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "const response = pm.response.json();",
-              "",
-              "console.log(response)",
-              "",
-              "pm.test(\"Response is an object\"), () => {",
-              "    pm.expect(pm.response.json()).to.be.an(\"object\");",
-              "}",
-              "",
-              "pm.test(\"Product name\", () => {",
-              "    pm.expect(response.name).to.be.a(\"String\");",
-              "});",
-              "",
-              "pm.test(\"Product price\", () => {",
-              "    pm.expect(response.price).to.be.a(\"number\");",
-              "    pm.expect(response.price).to.be.above(0);",
-              "});",
-              "",
-              "pm.test(\"Product is in stock\", () => {",
-              "    pm.expect(response.inStock).to.eql(true);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "3308a636-2171-4ed9-820b-78f193ceb931",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/products/:productId?product-label=true",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "products",
-            ":productId"
-          ],
-          "query": [
+          "name": "Get single product",
+          "event": [
             {
-              "key": "product-label",
-              "value": "true",
-              "uuid": "085a32e6-48ea-4c3c-8382-4fa7c9da430c"
-            }
-          ],
-          "variable": [
-            {
-              "key": "productId",
-              "value": "4641"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Create a Cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "1c7ef20f-dc76-4f68-b686-a9054d595798",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "a1757205-fe31-4e06-95fa-cecca38e0184",
-            "exec": [
-              "pm.test(\"Status code is 201\", () => {",
-              "    pm.response.to.have.status(201);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "1c96493a-e6ce-4b3a-8bd8-635bc7295832",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/carts",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "a576d2bc-96f2-4ac9-895f-be3f42935350",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "9cfc78e5-1c8e-4d63-8166-dda6525850aa",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "4a97985c-db08-4246-8981-ba852915829c",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId"
-          ],
-          "variable": [
-            {
-              "key": "cartId",
-              "value": "{{cartID}}"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Add items to cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "d682f4cf-d8af-46a6-853b-1458d622e7e3",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "ab5aa31f-3b96-4937-a965-64274df37f3b",
-            "exec": [
-              "pm.test(\"Status code is 201\", () => {",
-              "    pm.response.to.have.status(201);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "1622f9d7-e17f-4f35-98a8-7fb053b92123",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n   \"productId\": 4643\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId/items",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId",
-            "items"
-          ],
-          "variable": [
-            {
-              "key": "cartId",
-              "value": "{{cartID}}"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get cart items",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "352ed5d9-3340-4ef5-ba0e-f193f96fbe3f",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "2166c2df-45ac-4525-be63-9d5ff7f3b374",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "6bdb18e8-71ba-4e3d-a2ae-8894075329cd",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId/items",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId",
-            "items"
-          ],
-          "variable": [
-            {
-              "key": "cartId",
-              "value": "{{cartID}}"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Update item in cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "d63fb9dc-f43d-4f6f-8713-b5c130edf942",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "d3c21ce5-7f7c-4670-a6ae-c1a5b27fd4b6",
-            "exec": [
-              "pm.test(\"Status code is 204\", () => {",
-              "    pm.response.to.have.status(204);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "c537ba2f-482e-4c10-a846-2ad5a5befd95",
-      "request": {
-        "method": "PATCH",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n   \"quantity\": 8\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId",
-            "items",
-            ":itemId"
-          ],
-          "variable": [
-            {
-              "key": "cartId",
-              "value": "{{cartID}}"
+              "listen": "prerequest",
+              "script": {
+                "id": "ac756d87-5d03-4d71-9c72-711527f56c39",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             },
             {
-              "key": "itemId",
-              "value": "3979814"
+              "listen": "test",
+              "script": {
+                "id": "4da7e949-24cc-4999-83ef-2b42ee0bcd2c",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const response = pm.response.json();",
+                  "",
+                  "console.log(response)",
+                  "",
+                  "pm.test(\"Response is an object\"), () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"object\");",
+                  "}",
+                  "",
+                  "pm.test(\"Product name\", () => {",
+                  "    pm.expect(response.name).to.be.a(\"String\");",
+                  "});",
+                  "",
+                  "pm.test(\"Product price\", () => {",
+                  "    pm.expect(response.price).to.be.a(\"number\");",
+                  "    pm.expect(response.price).to.be.above(0);",
+                  "});",
+                  "",
+                  "pm.test(\"Product is in stock\", () => {",
+                  "    pm.expect(response.inStock).to.eql(true);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Replace item in cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "ec86b18d-a978-40aa-a088-5c0c47aa41e3",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          ],
+          "id": "3308a636-2171-4ed9-820b-78f193ceb931",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/:productId?product-label=true",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                ":productId"
+              ],
+              "query": [
+                {
+                  "key": "product-label",
+                  "value": "true",
+                  "uuid": "085a32e6-48ea-4c3c-8382-4fa7c9da430c"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "productId",
+                  "value": "4641"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "da3af99f-12df-4c61-a761-f121ab9ebfcd",
-            "exec": [
-              "pm.test(\"Status code is 204\", () => {",
-              "    pm.response.to.have.status(204);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "a45f87f8-b04d-4e37-8a96-36e5f2235185",
-      "request": {
-        "method": "PUT",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 1\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId",
-            "items",
-            ":itemId"
-          ],
-          "variable": [
+          "name": "Create a Cart",
+          "event": [
             {
-              "key": "cartId",
-              "value": "{{cartID}}"
+              "listen": "prerequest",
+              "script": {
+                "id": "1c7ef20f-dc76-4f68-b686-a9054d595798",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             },
             {
-              "key": "itemId",
-              "value": "3979814"
+              "listen": "test",
+              "script": {
+                "id": "a1757205-fe31-4e06-95fa-cecca38e0184",
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Delete an item from the cart",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "2e2f59ef-db42-4323-b902-c2e1b91fef8f",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          ],
+          "id": "1c96493a-e6ce-4b3a-8bd8-635bc7295832",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts"
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "3ea16ba7-bdbd-414e-813e-f8ccc15fa13a",
-            "exec": [
-              "pm.test(\"Status code is 204\", () => {",
-              "    pm.response.to.have.status(204);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "67e5d205-81b6-4e03-9a7a-72ef12218ccb",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 1\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "carts",
-            ":cartId",
-            "items",
-            ":itemId"
-          ],
-          "variable": [
+          "name": "Get cart",
+          "event": [
             {
-              "key": "cartId",
-              "value": "{{cartID}}"
+              "listen": "prerequest",
+              "script": {
+                "id": "a576d2bc-96f2-4ac9-895f-be3f42935350",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             },
             {
-              "key": "itemId",
-              "value": "3979814"
+              "listen": "test",
+              "script": {
+                "id": "9cfc78e5-1c8e-4d63-8166-dda6525850aa",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
             }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Register new client",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "c348147e-0756-4227-98ef-21e4ba2e3d99",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+          ],
+          "id": "4a97985c-db08-4246-8981-ba852915829c",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                }
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "a459de8e-842f-4b22-b88d-9a606876121b",
-            "exec": [
-              "pm.test(\"Status code is 201\", () => {",
-              "    pm.response.to.have.status(201);",
-              "});"
+          "name": "Add items to cart",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d682f4cf-d8af-46a6-853b-1458d622e7e3",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "ab5aa31f-3b96-4937-a965-64274df37f3b",
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "1622f9d7-e17f-4f35-98a8-7fb053b92123",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"productId\": 4643\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get cart items",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "352ed5d9-3340-4ef5-ba0e-f193f96fbe3f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "2166c2df-45ac-4525-be63-9d5ff7f3b374",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "6bdb18e8-71ba-4e3d-a2ae-8894075329cd",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update item in cart",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d63fb9dc-f43d-4f6f-8713-b5c130edf942",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "d3c21ce5-7f7c-4670-a6ae-c1a5b27fd4b6",
+                "exec": [
+                  "pm.test(\"Status code is 204\", () => {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "c537ba2f-482e-4c10-a846-2ad5a5befd95",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"quantity\": 8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items",
+                ":itemId"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                },
+                {
+                  "key": "itemId",
+                  "value": "3979814"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Replace item in cart",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "ec86b18d-a978-40aa-a088-5c0c47aa41e3",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "da3af99f-12df-4c61-a761-f121ab9ebfcd",
+                "exec": [
+                  "pm.test(\"Status code is 204\", () => {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "a45f87f8-b04d-4e37-8a96-36e5f2235185",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items",
+                ":itemId"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                },
+                {
+                  "key": "itemId",
+                  "value": "3979814"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an item from the cart",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2e2f59ef-db42-4323-b902-c2e1b91fef8f",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "3ea16ba7-bdbd-414e-813e-f8ccc15fa13a",
+                "exec": [
+                  "pm.test(\"Status code is 204\", () => {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "67e5d205-81b6-4e03-9a7a-72ef12218ccb",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items/:itemId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items",
+                ":itemId"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartID}}"
+                },
+                {
+                  "key": "itemId",
+                  "value": "3979814"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register new client",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "c348147e-0756-4227-98ef-21e4ba2e3d99",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a459de8e-842f-4b22-b88d-9a606876121b",
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "15863b54-57f5-4aea-8e0c-917c99662450",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal1234@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api-clients",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api-clients"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create an order",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e0db28fa-7b74-47fc-88dc-70872bdd7595",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "97fe1576-367d-477a-9c8e-65ea8e5fa20f",
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "3f545849-0c61-4c30-99dd-2b595903b6e5",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cartId\": \"T4JGa8tYdvVDM_hpmnlVP\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all orders",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "21b8e718-8c1e-432c-ba2a-a85226062820",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "f93b227d-ed98-4fee-9758-8b42c8e4f57b",
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "8222ff12-3586-4555-b347-ff0137ef421b",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update an order",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2cbf9742-9285-43f2-8ffd-719e330c0e5e",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "c7b3381b-df58-4eb2-954e-d11d905f6fa2",
+                "exec": [
+                  "pm.test(\"Status code is 204\", () => {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "800d3ca0-a86e-419a-b771-1326b4ce692b",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n \"customerName\": \"Joe Doe\",\n \"comment\": \"Please deliver by 10 AM\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderID",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderID"
+              ],
+              "variable": [
+                {
+                  "key": "orderID",
+                  "value": "_PCVzB5QUt_P3OrPkkd6x"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete an order",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "383f64ab-2f19-40d4-910b-1542879b30e5",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "fea0999d-385f-4a70-b3aa-9c147366c6fe",
+                "exec": [
+                  "pm.test(\"Status code is 204\", () => {",
+                  "    pm.response.to.have.status(204);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "735c7cd9-73f5-4fb4-b311-64f3d159ad7c",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderID",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderID"
+              ],
+              "variable": [
+                {
+                  "key": "orderID",
+                  "value": "_PCVzB5QUt_P3OrPkkd6x"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
-      "id": "15863b54-57f5-4aea-8e0c-917c99662450",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal1234@example.com\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/api-clients",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "api-clients"
-          ]
-        }
-      },
-      "response": []
+      "id": "87436cad-3e45-4f00-aabb-08c9e7b1f9a7"
     },
     {
-      "name": "Create an order",
-      "event": [
+      "name": "Missing authentication",
+      "item": [
         {
-          "listen": "prerequest",
-          "script": {
-            "id": "e0db28fa-7b74-47fc-88dc-70872bdd7595",
-            "exec": [
-              ""
+          "name": "Create an order no auth",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e0db28fa-7b74-47fc-88dc-70872bdd7595",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "97fe1576-367d-477a-9c8e-65ea8e5fa20f",
+                "exec": [
+                  "pm.test(\"Status code is 401\", () => {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains error message\", () => {",
+                  "    pm.expect(pm.response.json().error).to.include(\"Missing Authorization header.\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "757e3cc3-4d78-45ff-a029-cb1586872e50",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cartId\": \"T4JGa8tYdvVDM_hpmnlVP\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
         },
         {
-          "listen": "test",
-          "script": {
-            "id": "97fe1576-367d-477a-9c8e-65ea8e5fa20f",
-            "exec": [
-              "pm.test(\"Status code is 201\", () => {",
-              "    pm.response.to.have.status(201);",
-              "});"
+          "name": "Create an order invalid token",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "e0db28fa-7b74-47fc-88dc-70872bdd7595",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "97fe1576-367d-477a-9c8e-65ea8e5fa20f",
+                "exec": [
+                  "pm.test(\"Status code is 401\", () => {",
+                  "    pm.response.to.have.status(401);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains error message\", () => {",
+                  "    pm.expect(pm.response.json().error).to.include(\"Invalid bearer token.\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "87e3d90f-39c2-41ba-b877-c8818b702521",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "fbsehyfvuheg",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
             ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"cartId\": \"T4JGa8tYdvVDM_hpmnlVP\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": []
         }
       ],
-      "id": "3f545849-0c61-4c30-99dd-2b595903b6e5",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{accessToken}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "POST",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
-            "type": "text",
-            "disabled": true
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"cartId\": \"T4JGa8tYdvVDM_hpmnlVP\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/orders",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "orders"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Get all orders",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "21b8e718-8c1e-432c-ba2a-a85226062820",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "f93b227d-ed98-4fee-9758-8b42c8e4f57b",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "8222ff12-3586-4555-b347-ff0137ef421b",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{accessToken}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "GET",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
-            "type": "text",
-            "disabled": true
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/orders",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "orders"
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Update an order",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "2cbf9742-9285-43f2-8ffd-719e330c0e5e",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "c7b3381b-df58-4eb2-954e-d11d905f6fa2",
-            "exec": [
-              "pm.test(\"Status code is 204\", () => {",
-              "    pm.response.to.have.status(204);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "800d3ca0-a86e-419a-b771-1326b4ce692b",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{accessToken}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
-            "type": "text",
-            "disabled": true
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n \"customerName\": \"Joe Doe\",\n \"comment\": \"Please deliver by 10 AM\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{baseUrl}}/orders/:orderID",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "orders",
-            ":orderID"
-          ],
-          "variable": [
-            {
-              "key": "orderID",
-              "value": "_PCVzB5QUt_P3OrPkkd6x"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Delete an order",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "383f64ab-2f19-40d4-910b-1542879b30e5",
-            "exec": [
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "fea0999d-385f-4a70-b3aa-9c147366c6fe",
-            "exec": [
-              "pm.test(\"Status code is 204\", () => {",
-              "    pm.response.to.have.status(204);",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "735c7cd9-73f5-4fb4-b311-64f3d159ad7c",
-      "request": {
-        "auth": {
-          "type": "bearer",
-          "bearer": [
-            {
-              "key": "token",
-              "value": "{{accessToken}}",
-              "type": "string"
-            }
-          ]
-        },
-        "method": "PATCH",
-        "header": [
-          {
-            "key": "Authorization",
-            "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
-            "type": "text",
-            "disabled": true
-          }
-        ],
-        "url": {
-          "raw": "{{baseUrl}}/orders/:orderID",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "orders",
-            ":orderID"
-          ],
-          "variable": [
-            {
-              "key": "orderID",
-              "value": "_PCVzB5QUt_P3OrPkkd6x"
-            }
-          ]
-        }
-      },
-      "response": []
+      "id": "a47e9069-f1cc-4a92-8ada-5baf0a669129"
     }
   ],
   "variable": [
