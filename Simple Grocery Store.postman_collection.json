@@ -1309,6 +1309,148 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Get products - Results > 20",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
+                "exec": [
+                  "pm.test(\"Status code is 400\", () => {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains error message\", () => {",
+                  "        pm.expect(pm.response.text()).to.include(\"Invalid value for query parameter 'results'\")",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "1d8e839e-0094-4b05-a0ce-d2422f9761ed",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?results=21",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "invalid category",
+                  "uuid": "4d3fa613-4997-425e-9800-48790531d0ea",
+                  "disabled": true
+                },
+                {
+                  "key": "results",
+                  "value": "21",
+                  "uuid": "e101528e-00d0-4490-a21d-890c6d68740c"
+                },
+                {
+                  "key": "available",
+                  "value": "false",
+                  "type": "text",
+                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get products - Results < 0",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
+                "exec": [
+                  "pm.test(\"Status code is 400\", () => {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains error message\", () => {",
+                  "        pm.expect(pm.response.text()).to.include(\"Invalid value for query parameter 'results'\")",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "5efc71a9-ccb2-4e1e-ac9a-c17eeab3f1bb",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?results=-1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "invalid category",
+                  "uuid": "4d3fa613-4997-425e-9800-48790531d0ea",
+                  "disabled": true
+                },
+                {
+                  "key": "results",
+                  "value": "-1",
+                  "uuid": "e101528e-00d0-4490-a21d-890c6d68740c"
+                },
+                {
+                  "key": "available",
+                  "value": "false",
+                  "type": "text",
+                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ],
       "id": "385f863e-57a9-46d6-9974-942d6fcce815"
