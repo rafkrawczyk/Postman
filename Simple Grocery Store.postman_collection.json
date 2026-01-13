@@ -33,7 +33,9 @@
                   "console.log(person.sayHello());",
                   "console.log(person['e-mail']);",
                   "console.log(json);",
-                  "console.log(personNew);"
+                  "console.log(personNew);",
+                  "",
+                  "pm.collectionVariables.set(\"firstName\", \"Jamie\");"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -1458,18 +1460,23 @@
   ],
   "variable": [
     {
-      "id": "b82c77b3-9283-49e0-8309-d05d07452b80",
+      "id": "a85e646e-3e55-42d0-b7e1-d4dc4febc644",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "f2582cc3-a5ce-422a-8ccd-95e68a7041e2",
+      "id": "11173f09-228a-46d5-89ae-57bc08bdb090",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "cb83e89a-284f-499d-9f03-e48652f14a01",
+      "id": "712603fd-f2dc-4785-ab0f-a90ca000efb4",
       "key": "cartID",
+      "value": ""
+    },
+    {
+      "id": "09d5f8ac-dd1d-4f8d-9f79-fb7e08c00220",
+      "key": "firstName",
       "value": ""
     }
   ]
