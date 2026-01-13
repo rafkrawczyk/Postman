@@ -281,10 +281,10 @@
                   "pm.test(\"Response body contains cartId\", () => {",
                   "    pm.expect(pm.response.json()).to.be.an(\"object\");",
                   "    pm.expect(pm.response.json()).to.haveOwnProperty(\"cartId\");",
-                  "    pm.expect(pm.response.json().cartId).to.be.a(\"string\")",
-                  "});",
-                  "",
-                  "pm.collectionVariables.set(\"cartId\", pm.response.json().cartId);"
+                  "    pm.expect(pm.response.json().created).to.be.true;",
+                  "    pm.expect(pm.response.json().cartId).to.be.a(\"string\");",
+                  "    pm.collectionVariables.set(\"cartId\", pm.response.json().cartId);",
+                  "});"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -383,6 +383,14 @@
                 "exec": [
                   "pm.test(\"Status code is 201\", () => {",
                   "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains itemId\", () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"object\");",
+                  "    pm.expect(pm.response.json().created).to.be.true;",
+                  "    pm.expect(pm.response.json()).to.haveOwnProperty(\"itemId\");",
+                  "    pm.expect(pm.response.json().itemId).to.be.a(\"number\");",
+                  "    pm.collectionVariables.set(\"itemId\", pm.response.json().itemId);",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -398,6 +406,77 @@
             "body": {
               "mode": "raw",
               "raw": "{\n   \"productId\": {{productId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/carts/:cartId/items",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "carts",
+                ":cartId",
+                "items"
+              ],
+              "variable": [
+                {
+                  "key": "cartId",
+                  "value": "{{cartId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add 2nd item to cart",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d682f4cf-d8af-46a6-853b-1458d622e7e3",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "ab5aa31f-3b96-4937-a965-64274df37f3b",
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains itemId\", () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"object\");",
+                  "    pm.expect(pm.response.json().created).to.be.true;",
+                  "    pm.expect(pm.response.json()).to.haveOwnProperty(\"itemId\");",
+                  "    pm.expect(pm.response.json().itemId).to.be.a(\"number\");",
+                  "    pm.collectionVariables.set(\"itemId\", pm.response.json().itemId);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "f2738358-ad53-4fee-b45d-bef2cecfa864",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"productId\": 1709\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -539,7 +618,7 @@
                 },
                 {
                   "key": "itemId",
-                  "value": "3979814"
+                  "value": "{{itemId}}"
                 }
               ]
             }
@@ -582,7 +661,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 1\n}",
+              "raw": "{\n   \"productId\": 6483,\n   \"quantity\": 2\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -607,7 +686,7 @@
                 },
                 {
                   "key": "itemId",
-                  "value": "3979814"
+                  "value": "{{itemId}}"
                 }
               ]
             }
@@ -675,7 +754,7 @@
                 },
                 {
                   "key": "itemId",
-                  "value": "3979814"
+                  "value": "{{itemId}}"
                 }
               ]
             }
@@ -718,7 +797,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal1234@example.com\"\n}",
+              "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal01@example.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -759,6 +838,14 @@
                 "exec": [
                   "pm.test(\"Status code is 201\", () => {",
                   "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains orderId\", () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"object\");",
+                  "    pm.expect(pm.response.json().created).to.be.true;",
+                  "    pm.expect(pm.response.json()).to.haveOwnProperty(\"orderId\");",
+                  "    pm.expect(pm.response.json().orderId).to.be.a(\"string\");",
+                  "    pm.collectionVariables.set(\"orderId\", pm.response.json().orderId);",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -790,7 +877,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"cartId\": \"T4JGa8tYdvVDM_hpmnlVP\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
+              "raw": "{\n    \"cartId\": \"{{cartId}}\",\n    \"customerName\": \"{{$randomFullName}}\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -944,7 +1031,7 @@
               "variable": [
                 {
                   "key": "orderID",
-                  "value": "_PCVzB5QUt_P3OrPkkd6x"
+                  "value": "{{orderId}}"
                 }
               ]
             }
@@ -1014,7 +1101,7 @@
               "variable": [
                 {
                   "key": "orderID",
-                  "value": "_PCVzB5QUt_P3OrPkkd6x"
+                  "value": "{{orderId}}"
                 }
               ]
             }
@@ -1490,28 +1577,38 @@
   ],
   "variable": [
     {
-      "id": "eedd1084-a8a0-4279-ba02-098a420cf032",
+      "id": "f405fb7d-ca1f-44a8-82cb-5c5ead5a880d",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "ab53126e-3171-4400-9584-864aa5a90ef6",
+      "id": "325f1a57-2e50-417d-b106-b5c6d5db9d73",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "a128bce4-cb60-4902-ac00-a5978d303f80",
+      "id": "5c58aeae-2e2a-48d0-abda-66f81564be5c",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "5763dd70-c519-42f6-900f-61a8d5ede151",
+      "id": "71050278-54e4-41e9-a293-1969fd7d069d",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "b474cf47-257b-4bce-8503-50f263b90cdf",
+      "id": "1d7dbc69-3acf-4dcf-9aad-9911f3ef8c96",
       "key": "cartId",
+      "value": ""
+    },
+    {
+      "id": "b882e752-bc87-4b07-9027-838be9e4e9d2",
+      "key": "itemId",
+      "value": ""
+    },
+    {
+      "id": "882c5dde-0f35-42b4-bd15-92d1974ac744",
+      "key": "orderId",
       "value": ""
     }
   ]
