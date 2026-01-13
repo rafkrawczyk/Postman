@@ -108,7 +108,17 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", () => {",
                   "    pm.response.to.have.status(200);",
-                  "});"
+                  "});",
+                  "",
+                  "const response = pm.response.json();",
+                  "",
+                  "pm.test(\"Response body is not empty\", () => {",
+                  "    pm.expect(response).to.not.be.empty;",
+                  "});",
+                  "",
+                  "console.log(response[0].id)",
+                  "",
+                  "pm.collectionVariables.set(\"productId\", response[0].id)"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -121,7 +131,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{baseUrl}}/products",
+              "raw": "{{baseUrl}}/products?available=true",
               "host": [
                 "{{baseUrl}}"
               ],
@@ -141,10 +151,8 @@
                 },
                 {
                   "key": "available",
-                  "value": "false",
-                  "type": "text",
-                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
-                  "disabled": true
+                  "value": "true",
+                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620"
                 }
               ]
             }
@@ -225,7 +233,7 @@
               "variable": [
                 {
                   "key": "productId",
-                  "value": "4641"
+                  "value": "{{productId}}"
                 }
               ]
             }
@@ -367,7 +375,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"productId\": 4643\n}",
+              "raw": "{\n   \"productId\": {{productId}}\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1460,23 +1468,28 @@
   ],
   "variable": [
     {
-      "id": "a85e646e-3e55-42d0-b7e1-d4dc4febc644",
+      "id": "04142640-a249-4049-bf79-033d934aeb14",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "11173f09-228a-46d5-89ae-57bc08bdb090",
+      "id": "4814d2d9-1d0b-4d2d-942c-7ec4e4859b13",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "712603fd-f2dc-4785-ab0f-a90ca000efb4",
+      "id": "ed33f652-3627-425f-83ca-9bb25e20e7ef",
       "key": "cartID",
       "value": ""
     },
     {
-      "id": "09d5f8ac-dd1d-4f8d-9f79-fb7e08c00220",
+      "id": "abff2028-7c08-419d-aa23-2d7a5ab51574",
       "key": "firstName",
+      "value": ""
+    },
+    {
+      "id": "67518a2e-3716-4bc3-9973-1d61df3c6e6b",
+      "key": "productId",
       "value": ""
     }
   ]
