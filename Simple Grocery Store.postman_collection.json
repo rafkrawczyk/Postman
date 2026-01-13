@@ -110,15 +110,28 @@
                   "    pm.response.to.have.status(200);",
                   "});",
                   "",
+                  "pm.test(\"Response body is not empty\", () => {",
+                  "    pm.expect(pm.response.json()).to.not.be.empty;",
+                  "});",
+                  "",
+                  "pm.test(\"At least one available product exists\", () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"array\");",
+                  "    pm.expect(pm.response.json().length).to.be.at.least(1);",
+                  "});",
+                  "",
                   "const response = pm.response.json();",
                   "",
-                  "pm.test(\"Response body is not empty\", () => {",
-                  "    pm.expect(response).to.not.be.empty;",
-                  "});",
+                  "const product = response.find(item => item.inStock === true);",
+                  "pm.expect(product).to.be.an(\"object\");",
+                  "pm.expect(product.id).to.be.a(\"number\");",
+                  "pm.expect(product).to.haveOwnProperty(\"id\");",
+                  "pm.expect(product).to.haveOwnProperty(\"inStock\");",
+                  "pm.expect(product.inStock).to.be.true;",
+                  "",
                   "",
                   "console.log(response[0].id)",
                   "",
-                  "pm.collectionVariables.set(\"productId\", response[0].id)"
+                  "pm.collectionVariables.set(\"productId\", product.id)"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -141,7 +154,8 @@
               "query": [
                 {
                   "key": "category",
-                  "value": "coffee",
+                  "value": "eggs",
+                  "uuid": "8b9215aa-8bb8-41dc-8b99-afc24afacb35",
                   "disabled": true
                 },
                 {
@@ -262,7 +276,15 @@
                 "exec": [
                   "pm.test(\"Status code is 201\", () => {",
                   "    pm.response.to.have.status(201);",
-                  "});"
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains cartId\", () => {",
+                  "    pm.expect(pm.response.json()).to.be.an(\"object\");",
+                  "    pm.expect(pm.response.json()).to.haveOwnProperty(\"cartId\");",
+                  "    pm.expect(pm.response.json().cartId).to.be.a(\"string\")",
+                  "});",
+                  "",
+                  "pm.collectionVariables.set(\"cartId\", pm.response.json().cartId);"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -332,7 +354,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 }
               ]
             }
@@ -395,7 +417,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 }
               ]
             }
@@ -449,7 +471,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 }
               ]
             }
@@ -513,7 +535,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 },
                 {
                   "key": "itemId",
@@ -581,7 +603,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 },
                 {
                   "key": "itemId",
@@ -649,7 +671,7 @@
               "variable": [
                 {
                   "key": "cartId",
-                  "value": "{{cartID}}"
+                  "value": "{{cartId}}"
                 },
                 {
                   "key": "itemId",
@@ -1468,28 +1490,28 @@
   ],
   "variable": [
     {
-      "id": "04142640-a249-4049-bf79-033d934aeb14",
+      "id": "eedd1084-a8a0-4279-ba02-098a420cf032",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "4814d2d9-1d0b-4d2d-942c-7ec4e4859b13",
+      "id": "ab53126e-3171-4400-9584-864aa5a90ef6",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "ed33f652-3627-425f-83ca-9bb25e20e7ef",
-      "key": "cartID",
-      "value": ""
-    },
-    {
-      "id": "abff2028-7c08-419d-aa23-2d7a5ab51574",
+      "id": "a128bce4-cb60-4902-ac00-a5978d303f80",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "67518a2e-3716-4bc3-9973-1d61df3c6e6b",
+      "id": "5763dd70-c519-42f6-900f-61a8d5ede151",
       "key": "productId",
+      "value": ""
+    },
+    {
+      "id": "b474cf47-257b-4bce-8503-50f263b90cdf",
+      "key": "cartId",
       "value": ""
     }
   ]
