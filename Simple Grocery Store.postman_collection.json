@@ -1237,6 +1237,81 @@
           }
         }
       ]
+    },
+    {
+      "name": "Invalid inputs",
+      "item": [
+        {
+          "name": "Get products - Invalid category",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
+                "exec": [
+                  "pm.test(\"Status code is 400\", () => {",
+                  "    pm.response.to.have.status(400);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body contains error message\", () => {",
+                  "        pm.expect(pm.response.text()).to.include(\"Invalid value for query parameter 'category'\");",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "143702c8-b39f-46af-8fb7-a1d5f3ce3987",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products?category=invalid category",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "invalid category"
+                },
+                {
+                  "key": "results",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "available",
+                  "value": "false",
+                  "type": "text",
+                  "uuid": "f154af13-e6cb-434b-adb4-13a138f4b620",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "385f863e-57a9-46d6-9974-942d6fcce815"
     }
   ],
   "variable": [
