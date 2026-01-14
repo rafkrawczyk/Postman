@@ -1085,7 +1085,7 @@
                 }
               ]
             },
-            "method": "PATCH",
+            "method": "DELETE",
             "header": [
               {
                 "key": "Authorization",
@@ -1107,6 +1107,83 @@
                 {
                   "key": "orderID",
                   "value": "{{orderId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a single order",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "21b8e718-8c1e-432c-ba2a-a85226062820",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "f93b227d-ed98-4fee-9758-8b42c8e4f57b",
+                "exec": [
+                  "pm.test(\"Status code is 404\", () => {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Error message is correct\", () => {",
+                  "    const productId = pm.collectionVariables.get(\"orderId\");",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData.error).to.include(productId);",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "id": "6b7b387b-c133-42f4-b184-733d5ef45738",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{accessToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "8ebb0e3d986b97e5ec8a1cc86b3996a6c0b9433d1233caeb2d75aadf3f1ddf04",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}",
+                  "uuid": "4f3e55cb-7ef4-4bd5-b3d8-99ddba1cf1c0"
                 }
               ]
             }
