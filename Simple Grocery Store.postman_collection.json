@@ -1137,8 +1137,11 @@
                   "    pm.response.to.have.status(404);",
                   "});",
                   "",
+                  "console.log(pm.collectionVariables.get(\"orderId\"));",
+                  "",
                   "pm.test(\"Error message is correct\", () => {",
-                  "    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"orderId\"));",
+                  "    pm.expect(pm.response.json()).to.haveOwnProperty(\"error\");",
+                  "    pm.expect(pm.response.json().error).to.include(pm.collectionVariables.get(\"orderId\"));",
                   "});"
                 ],
                 "type": "text/javascript",
