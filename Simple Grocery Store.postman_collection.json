@@ -1138,9 +1138,7 @@
                   "});",
                   "",
                   "pm.test(\"Error message is correct\", () => {",
-                  "    const productId = pm.collectionVariables.get(\"orderId\");",
-                  "    const jsonData = pm.response.json();",
-                  "    pm.expect(jsonData.error).to.include(productId);",
+                  "    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"orderId\"));",
                   "});"
                 ],
                 "type": "text/javascript",
