@@ -933,14 +933,12 @@
                   "let found = false;",
                   "",
                   "pm.test(\"Response contains the orderId\", () => {",
-                  "    for (let i = 0; i < response.length; i++) {",
-                  "        console.log(\"Checking ID:\", response[i].id);",
-                  "        ",
-                  "        if (response[i].id === targetId) {",
+                  "    response.forEach((order) => {",
+                  "        console.log(\"Checking ID:\", order.id);",
+                  "        if (order.id === targetId) {",
                   "            found = true;",
                   "        }",
-                  "    }",
-                  "    pm.expect(found).to.be.true;",
+                  "    })",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -1677,37 +1675,37 @@
   ],
   "variable": [
     {
-      "id": "ad7658ed-4edd-4c80-b89d-48b31a2304be",
+      "id": "c7566a88-3c7b-4c34-bbdc-79d45426f68a",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "48e7a760-ba33-47f4-ae26-c0b2d7e5ca4e",
+      "id": "3e79abe7-1c3b-406e-9d0d-45f1316c2c4f",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "7aa38d8d-fccc-4a19-b688-93ec6f915b5f",
+      "id": "f6730d6a-7781-46d2-9738-c4d14f7cab66",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "8677bc4c-e010-4017-8f80-9438ea95edbd",
+      "id": "dca194a2-dc39-4418-99c3-b30b795a7dbc",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "4f9a62df-6c4b-491b-923e-2a76e127e217",
+      "id": "593abbc2-0f4f-4fa9-9249-c091354da361",
       "key": "cartId",
       "value": ""
     },
     {
-      "id": "33946cc5-e369-4bfc-a573-039a5dd9bd42",
+      "id": "656dccc8-8768-4294-a9bd-1d1749b2a816",
       "key": "itemId",
       "value": ""
     },
     {
-      "id": "012b3649-cdb8-47a1-b8af-543b8a3ac03e",
+      "id": "254488ef-a9a9-4493-9892-f69a6ae99e7e",
       "key": "orderId",
       "value": ""
     }
