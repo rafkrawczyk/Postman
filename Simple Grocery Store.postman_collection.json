@@ -923,6 +923,24 @@
                 "exec": [
                   "pm.test(\"Status code is 200\", () => {",
                   "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "const response = pm.response.json();",
+                  "const targetId = pm.collectionVariables.get(\"orderId\");",
+                  "",
+                  "console.log(\"Looking for:\", targetId);",
+                  "",
+                  "let found = false;",
+                  "",
+                  "pm.test(\"Response contains the orderId\", () => {",
+                  "    for (let i = 0; i < response.length; i++) {",
+                  "        console.log(\"Checking ID:\", response[i].id);",
+                  "        ",
+                  "        if (response[i].id === targetId) {",
+                  "            found = true;",
+                  "        }",
+                  "    }",
+                  "    pm.expect(found).to.be.true;",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -1183,8 +1201,7 @@
               "variable": [
                 {
                   "key": "orderId",
-                  "value": "{{orderId}}",
-                  "uuid": "4f3e55cb-7ef4-4bd5-b3d8-99ddba1cf1c0"
+                  "value": "{{orderId}}"
                 }
               ]
             }
@@ -1660,37 +1677,37 @@
   ],
   "variable": [
     {
-      "id": "f405fb7d-ca1f-44a8-82cb-5c5ead5a880d",
+      "id": "ad7658ed-4edd-4c80-b89d-48b31a2304be",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "325f1a57-2e50-417d-b106-b5c6d5db9d73",
+      "id": "48e7a760-ba33-47f4-ae26-c0b2d7e5ca4e",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "5c58aeae-2e2a-48d0-abda-66f81564be5c",
+      "id": "7aa38d8d-fccc-4a19-b688-93ec6f915b5f",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "71050278-54e4-41e9-a293-1969fd7d069d",
+      "id": "8677bc4c-e010-4017-8f80-9438ea95edbd",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "1d7dbc69-3acf-4dcf-9aad-9911f3ef8c96",
+      "id": "4f9a62df-6c4b-491b-923e-2a76e127e217",
       "key": "cartId",
       "value": ""
     },
     {
-      "id": "b882e752-bc87-4b07-9027-838be9e4e9d2",
+      "id": "33946cc5-e369-4bfc-a573-039a5dd9bd42",
       "key": "itemId",
       "value": ""
     },
     {
-      "id": "882c5dde-0f35-42b4-bd15-92d1974ac744",
+      "id": "012b3649-cdb8-47a1-b8af-543b8a3ac03e",
       "key": "orderId",
       "value": ""
     }
