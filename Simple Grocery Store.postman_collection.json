@@ -57,7 +57,9 @@
                   "    pm.expect(response.status).to.eql(\"UP\");",
                   "});",
                   "",
-                  "console.log(pm.response.json());"
+                  "console.log(pm.response.json());",
+                  "",
+                  "console.log(pm.collectionVariables.get(\"productId\"));"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -565,7 +567,11 @@
               "script": {
                 "id": "d63fb9dc-f43d-4f6f-8713-b5c130edf942",
                 "exec": [
-                  ""
+                  "function getRandomNumber(maxValue) {",
+                  "    return Math.floor(Math.random() * maxValue);",
+                  "}",
+                  "",
+                  "pm.collectionVariables.set(\"randomQuantity\", getRandomNumber(12));"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -593,7 +599,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"quantity\": 8\n}",
+              "raw": "{\n   \"quantity\": {{randomQuantity}}\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1675,38 +1681,48 @@
   ],
   "variable": [
     {
-      "id": "c7566a88-3c7b-4c34-bbdc-79d45426f68a",
+      "id": "c9887e86-4274-49a9-8448-24412ebc9e29",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "3e79abe7-1c3b-406e-9d0d-45f1316c2c4f",
+      "id": "5724af81-379e-4f08-89a1-46056bac9fc7",
       "key": "accessToken",
       "value": ""
     },
     {
-      "id": "f6730d6a-7781-46d2-9738-c4d14f7cab66",
+      "id": "c97048a9-4c0b-4f42-8062-34470689a5e3",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "dca194a2-dc39-4418-99c3-b30b795a7dbc",
+      "id": "6bef7a8f-9ec4-4bb0-96f8-d12e1cb42fb9",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "593abbc2-0f4f-4fa9-9249-c091354da361",
+      "id": "27aa9ebe-2c5d-4236-9859-018577a7e1ef",
       "key": "cartId",
       "value": ""
     },
     {
-      "id": "656dccc8-8768-4294-a9bd-1d1749b2a816",
+      "id": "3915d1d0-94d1-4a9b-bce4-2200c728f3d4",
       "key": "itemId",
       "value": ""
     },
     {
-      "id": "254488ef-a9a9-4493-9892-f69a6ae99e7e",
+      "id": "e4909011-5c24-44fb-916c-fa4e645e5e33",
       "key": "orderId",
+      "value": ""
+    },
+    {
+      "id": "12cbe6e8-002b-4415-bf32-a09f646e554b",
+      "key": "someObject",
+      "value": ""
+    },
+    {
+      "id": "298e7e11-58d2-4b0a-8631-a52e57ddc32f",
+      "key": "randomQuantity",
       "value": ""
     }
   ]
