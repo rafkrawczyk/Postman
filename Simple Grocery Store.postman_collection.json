@@ -37,7 +37,10 @@
                   "",
                   "pm.collectionVariables.set(\"firstName\", \"Jamie\");",
                   "",
-                  "pm.environment.set(\"firstName\", \"Jamie\");"
+                  "pm.environment.set(\"firstName\", \"Jamie\");",
+                  "pm.environment.unset(\"firstName\");",
+                  "console.log(pm.environment.get(\"firstName\"));",
+                  ""
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -131,7 +134,7 @@
                   "",
                   "console.log(response[0].id)",
                   "",
-                  "pm.collectionVariables.set(\"productId\", product.id)"
+                  "pm.environment.set(\"productId\", product.id)"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -202,7 +205,7 @@
                   "console.log(response)",
                   "",
                   "pm.test(\"Correct product was retrieved\", () => {",
-                  "    const requestedProductId = pm.collectionVariables.get(\"productId\");",
+                  "    const requestedProductId = pm.variables.get(\"productId\");",
                   "    pm.expect(response.id).to.eql(requestedProductId)",
                   "});",
                   "",
@@ -288,7 +291,7 @@
                   "    pm.expect(pm.response.json()).to.haveOwnProperty(\"cartId\");",
                   "    pm.expect(pm.response.json().created).to.be.true;",
                   "    pm.expect(pm.response.json().cartId).to.be.a(\"string\");",
-                  "    pm.collectionVariables.set(\"cartId\", pm.response.json().cartId);",
+                  "    pm.environment.set(\"cartId\", pm.response.json().cartId);",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -395,7 +398,7 @@
                   "    pm.expect(pm.response.json().created).to.be.true;",
                   "    pm.expect(pm.response.json()).to.haveOwnProperty(\"itemId\");",
                   "    pm.expect(pm.response.json().itemId).to.be.a(\"number\");",
-                  "    pm.collectionVariables.set(\"itemId\", pm.response.json().itemId);",
+                  "    pm.environment.set(\"itemId\", pm.response.json().itemId);",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -574,7 +577,7 @@
                   "    return Math.floor(Math.random() * maxValue);",
                   "}",
                   "",
-                  "pm.collectionVariables.set(\"randomQuantity\", getRandomNumber(17));"
+                  "pm.environment.set(\"randomQuantity\", getRandomNumber(17));"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -806,7 +809,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal01@example.com\"\n}",
+              "raw": "{\n   \"clientName\": \"Postman on Rafał's computer\",\n   \"clientEmail\": \"rafal02@example.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -854,7 +857,7 @@
                   "    pm.expect(pm.response.json().created).to.be.true;",
                   "    pm.expect(pm.response.json()).to.haveOwnProperty(\"orderId\");",
                   "    pm.expect(pm.response.json().orderId).to.be.a(\"string\");",
-                  "    pm.collectionVariables.set(\"orderId\", pm.response.json().orderId);",
+                  "    pm.environment.set(\"orderId\", pm.response.json().orderId);",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -930,7 +933,7 @@
                   "});",
                   "",
                   "const response = pm.response.json();",
-                  "const targetId = pm.collectionVariables.get(\"orderId\");",
+                  "const targetId = pm.environment.get(\"orderId\");",
                   "",
                   "pm.test(\"Response contains the specific Order Object\", () => {",
                   "    // 1. Try to find the object in the array",
@@ -1162,11 +1165,11 @@
                   "    pm.response.to.have.status(404);",
                   "});",
                   "",
-                  "console.log(pm.collectionVariables.get(\"orderId\"));",
+                  "console.log(pm.environment.get(\"orderId\"));",
                   "",
                   "pm.test(\"Error message is correct\", () => {",
                   "    pm.expect(pm.response.json()).to.haveOwnProperty(\"error\");",
-                  "    pm.expect(pm.response.json().error).to.include(pm.collectionVariables.get(\"orderId\"));",
+                  "    pm.expect(pm.response.json().error).to.include(pm.environment.get(\"orderId\"));",
                   "});"
                 ],
                 "type": "text/javascript",
@@ -1687,47 +1690,47 @@
   ],
   "variable": [
     {
-      "id": "ea1bf126-ec75-44e0-b408-febcc854ef40",
+      "id": "bcac57e1-9c88-486c-a3dc-73bc6f224963",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "6cbbbc95-6612-4417-adad-d0593e112430",
+      "id": "3af55c91-d785-420f-921f-4f60615dc695",
       "key": "accessToken",
       "value": "bd4fdc26bd39c6c21fc119291bca6ab670eb85f2ef4d84a46b2e68e3e79eff2a"
     },
     {
-      "id": "cf7479fa-4274-4589-98e1-67b47bbafdf8",
+      "id": "baebf1e7-4be7-41f2-96fd-471e3f60e342",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "25dcf56a-fdf5-4d2b-ae58-978121852bab",
+      "id": "6819e8da-57e7-4ce5-b2ca-22b436f064cf",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "bb6d8bb6-e998-4c33-ba36-02f1cbb3d6e4",
+      "id": "0efe7092-dc4e-4e07-ba8c-a9e30977ff8b",
       "key": "cartId",
       "value": ""
     },
     {
-      "id": "f2370694-f4dd-4ff4-8744-ed6080d0cce4",
+      "id": "cd849fd6-a547-47b9-a999-3739859357f3",
       "key": "itemId",
       "value": ""
     },
     {
-      "id": "5cb92b0b-64fa-4710-8c46-18bca210abc9",
+      "id": "b259616b-7c5b-48a1-b525-085f5f256832",
       "key": "orderId",
       "value": ""
     },
     {
-      "id": "9057d3a4-1c42-4a83-a5ed-606213ca0d76",
+      "id": "220b55fc-52e2-4c30-b377-fafc80db6d68",
       "key": "someObject",
       "value": ""
     },
     {
-      "id": "224191ac-95a6-4fdc-8081-e305a1fd7773",
+      "id": "7c307b96-fdb7-48cf-8cb9-471b8e7310c5",
       "key": "randomQuantity",
       "value": ""
     }
