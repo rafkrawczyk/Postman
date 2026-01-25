@@ -35,7 +35,9 @@
                   "console.log(json);",
                   "console.log(personNew);",
                   "",
-                  "pm.collectionVariables.set(\"firstName\", \"Jamie\");"
+                  "pm.collectionVariables.set(\"firstName\", \"Jamie\");",
+                  "",
+                  "pm.environment.set(\"firstName\", \"Jamie\");"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -82,89 +84,7 @@
               ]
             }
           },
-          "response": [
-            {
-              "id": "e3391409-d1f1-4209-98a7-d6a029eb4435",
-              "name": "API Status",
-              "originalRequest": {
-                "method": "GET",
-                "header": [],
-                "url": {
-                  "raw": "{{baseUrl}}/status",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "status"
-                  ]
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "15"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "Date",
-                  "value": "Tue, 20 Jan 2026 14:52:16 GMT"
-                },
-                {
-                  "key": "X-Amzn-Trace-Id",
-                  "value": "Root=1-696f96a0-2907221d4905865e4e949e97;Parent=773a04e96e56a866;Sampled=0;Lineage=1:3475f4bc:0"
-                },
-                {
-                  "key": "x-amzn-RequestId",
-                  "value": "001fa678-7ce0-433f-940b-0e8b91f69098"
-                },
-                {
-                  "key": "Access-Control-Allow-Origin",
-                  "value": "*"
-                },
-                {
-                  "key": "Access-Control-Allow-Headers",
-                  "value": "Content-Type,X-Amz-Date,Authorization,X-Api-Key"
-                },
-                {
-                  "key": "x-amz-apigw-id",
-                  "value": "XfR5GHw8oAMEZFw="
-                },
-                {
-                  "key": "Access-Control-Allow-Methods",
-                  "value": "GET,POST,PUT,PATCH,DELETE,OPTIONS"
-                },
-                {
-                  "key": "X-Cache",
-                  "value": "Miss from cloudfront"
-                },
-                {
-                  "key": "Via",
-                  "value": "1.1 ce277c44a7fcd3e0deed163891a63842.cloudfront.net (CloudFront)"
-                },
-                {
-                  "key": "X-Amz-Cf-Pop",
-                  "value": "WAW51-P4"
-                },
-                {
-                  "key": "X-Amz-Cf-Id",
-                  "value": "ZlOT9sFFBNAuBKYaSZLXa8YfuovPqIt06bk7nmZ96PMvsDCO2QqBFw=="
-                }
-              ],
-              "cookie": [],
-              "responseTime": "2026-01-20T14:52:26.566Z",
-              "body": "{\n    \"status\": \"UP\"\n}"
-            }
-          ]
+          "response": []
         },
         {
           "name": "Get products",
@@ -1691,23 +1611,11 @@
           "name": "Get products - Results < 0",
           "event": [
             {
-              "listen": "prerequest",
-              "script": {
-                "id": "2e532b69-1bb3-4877-83ab-f2e82c22549c",
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            },
-            {
               "listen": "test",
               "script": {
-                "id": "a29caad7-632c-4876-91cf-9a9ac92ec414",
+                "id": "c4e18cc4-2147-4e2c-a848-c4edfc1d3897",
                 "exec": [
-                  "if () {",
+                  "if (pm.environment.name === \"Testing\") {",
                   "    console.log(pm.environment.name)",
                   "",
                   "    pm.test(\"Status code is 400\", () => {",
@@ -1718,6 +1626,18 @@
                   "            pm.expect(pm.response.text()).to.include(\"Invalid value for query parameter 'results'\")",
                   "    });",
                   "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "80c4f18d-311f-4059-be7b-c743bb89209a",
+                "exec": [
+                  ""
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -1767,47 +1687,47 @@
   ],
   "variable": [
     {
-      "id": "0e32ee20-e4d6-4679-9dc7-e26be4cd9768",
+      "id": "ea1bf126-ec75-44e0-b408-febcc854ef40",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "bef3b65a-1fa3-4b03-a8e6-193bd2b99a39",
+      "id": "6cbbbc95-6612-4417-adad-d0593e112430",
       "key": "accessToken",
       "value": "bd4fdc26bd39c6c21fc119291bca6ab670eb85f2ef4d84a46b2e68e3e79eff2a"
     },
     {
-      "id": "79f13af7-c936-4e42-925c-1aaaab298d23",
+      "id": "cf7479fa-4274-4589-98e1-67b47bbafdf8",
       "key": "firstName",
       "value": ""
     },
     {
-      "id": "eb771004-cb73-4b21-8b64-fd3b51a329f7",
+      "id": "25dcf56a-fdf5-4d2b-ae58-978121852bab",
       "key": "productId",
       "value": ""
     },
     {
-      "id": "a80c6114-9f8c-44d6-80f8-2da27b19df75",
+      "id": "bb6d8bb6-e998-4c33-ba36-02f1cbb3d6e4",
       "key": "cartId",
       "value": ""
     },
     {
-      "id": "e7590385-87a9-4199-90aa-1f35144eaa37",
+      "id": "f2370694-f4dd-4ff4-8744-ed6080d0cce4",
       "key": "itemId",
       "value": ""
     },
     {
-      "id": "fba75f22-dcba-425b-a642-32b8d29e6df6",
+      "id": "5cb92b0b-64fa-4710-8c46-18bca210abc9",
       "key": "orderId",
       "value": ""
     },
     {
-      "id": "3b78528f-9cc3-41a2-922c-b54bcce410db",
+      "id": "9057d3a4-1c42-4a83-a5ed-606213ca0d76",
       "key": "someObject",
       "value": ""
     },
     {
-      "id": "a2863dd8-0ef9-4ea2-8da6-47eeca0286b1",
+      "id": "224191ac-95a6-4fdc-8081-e305a1fd7773",
       "key": "randomQuantity",
       "value": ""
     }
