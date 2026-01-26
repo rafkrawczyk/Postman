@@ -206,7 +206,7 @@
               "});",
               "",
               "pm.test(\"Board is open\", () => {",
-              "    pm.expect(jsonData.closed).to.eql(false);",
+              "    pm.expect(jsonData.closed).to.be.false;",
               "});",
               "",
               "pm.test(\"Board is private\", () => {",
@@ -214,7 +214,8 @@
               "});",
               "",
               "pm.test(\"Calendar view is disabled\", () => {",
-              "    pm.expect(jsonData.prefs.switcherViews[2].enabled).to.eql(false);",
+              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\")).to.be.an(\"object\");",
+              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\").enabled).to.be.false;",
               "});"
             ],
             "type": "text/javascript",
@@ -635,42 +636,42 @@
   },
   "variable": [
     {
-      "id": "4f912f4c-1de3-460c-8c7a-9a6dd407cf46",
+      "id": "721e2b1e-a353-4a14-8ebc-d7987a3f028e",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "60ca6e70-cdb6-4c9d-816e-970443af543e",
+      "id": "4327e9c3-8c27-491e-af81-dc81728d2370",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "5db8e34c-c418-4b4c-ad83-f7efdccc7c9d",
+      "id": "cd3d1796-05ff-469f-b89a-c16e5c4b16a5",
       "key": "token",
       "value": ""
     },
     {
-      "id": "8887c8f3-2ebb-44a4-8c23-c8d24255890b",
+      "id": "42891d13-5378-4fb2-a04e-ab38389914cf",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "05eb2f42-b4a0-480c-b5a6-6d6ad2549e9a",
+      "id": "2ae0d594-c8e9-4851-a22d-643e2ebbaf4c",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "44e49bff-272a-4024-9b5f-f3a25f7572af",
+      "id": "0d95da17-0530-4991-a91a-702bc928e573",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "1a026c51-02af-4a8f-9281-8e66c62a3b96",
+      "id": "832855cd-47c1-4692-8296-0cfdb7ffb21e",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "11716992-2f03-4ebb-aac7-cdf5d38cd1bd",
+      "id": "f86e1569-4f55-476f-a902-38dc0a2f5f3c",
       "key": "existingBoardIds",
       "value": ""
     }
