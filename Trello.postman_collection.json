@@ -62,7 +62,13 @@
               "});",
               "",
               "const jsonData = pm.response.json();",
-              "pm.collectionVariables.set(\"boardId\", jsonData[0].id)"
+              "console.log(jsonData.length);",
+              "pm.collectionVariables.set(\"boardId\", jsonData[0].id);",
+              "pm.collectionVariables.set(\"boardIdToDelete\", jsonData[0].id);",
+              "",
+              "console.log(jsonData.map(board => board.id));",
+              "const existingBoardIds = jsonData.map(board => board.id);",
+              "pm.collectionVariables.set(\"existingBoardIds\", existingBoardIds)"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -193,7 +199,23 @@
               "",
               "const jsonData = pm.response.json();",
               "",
-              "pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);"
+              "pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);",
+              "",
+              "pm.test(\"Board created successfully\", () => {",
+              "    pm.expect(jsonData.name).to.eql(\"My_First_Board\");",
+              "});",
+              "",
+              "pm.test(\"Board is open\", () => {",
+              "    pm.expect(jsonData.closed).to.eql(false);",
+              "});",
+              "",
+              "pm.test(\"Board is private\", () => {",
+              "    pm.expect(jsonData.prefs.permissionLevel).to.eql(\"private\");",
+              "});",
+              "",
+              "pm.test(\"Calendar view is disabled\", () => {",
+              "    pm.expect(jsonData.prefs.switcherViews[2].enabled).to.eql(false);",
+              "});"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -543,7 +565,10 @@
           "script": {
             "id": "5291addc-fd4d-4f85-beac-75b702a81ce5",
             "exec": [
-              ""
+              "const existingBoardIds = pm.collectionVariables.get(\"existingBoardIds\");",
+              "const boardIdToDelete = existingBoardIds.pop();",
+              "pm.collectionVariables.set(\"boardIdToDelete\", boardIdToDelete);",
+              "pm.collectionVariables.set(\"existingBoardIds\", existingBoardIds);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -610,38 +635,43 @@
   },
   "variable": [
     {
-      "id": "2374cdb9-e5e5-463a-aec9-c1586610f550",
+      "id": "ba6fac7b-ea36-4840-b2aa-1c014caa94d0",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "ec0cea16-8f16-4649-ae38-da37d7c03165",
+      "id": "d2e528ca-6598-4b79-b8b6-c76aab99f81e",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "2f6246d2-29ff-4854-9c10-418ff7765873",
+      "id": "426fabd5-9f10-4aed-81af-09ae5129d2fc",
       "key": "token",
       "value": ""
     },
     {
-      "id": "0bc3223a-b4b2-45e4-9fc2-2fb5a09caf36",
+      "id": "1a94d141-8200-4421-930f-ccef4e8e077a",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "0e222bd2-bc55-4fe3-a1f5-86a7b0354b15",
+      "id": "fed47a71-998c-4181-a5dc-c76190f74f9d",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "1216ca06-0f5c-4274-ad9d-d80b1193fa00",
+      "id": "372dfc5f-2888-45e2-8510-ce4facf4f002",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "8ebe2b0d-f16c-4c0c-87b1-0f3e05659d04",
+      "id": "83b2b8c5-eac3-4412-a230-efdb3fbfcd81",
       "key": "cardId",
+      "value": ""
+    },
+    {
+      "id": "bd89eaf6-36a0-45f9-87ca-ed67ed39aa21",
+      "key": "existingBoardIds",
       "value": ""
     }
   ]
