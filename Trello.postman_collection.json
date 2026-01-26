@@ -7,12 +7,60 @@
   "item": [
     {
       "name": "Get all boards",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "0ef262c5-6e1f-471e-a5d3-cf6e36f56419",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "94fbebc7-3c2a-4809-a8d1-6b4c7800dc87",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "1765a88f-7c76-4261-96b5-5c93bce80601",
       "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "in",
+              "value": "query",
+              "type": "string"
+            },
+            {
+              "key": "value",
+              "value": "f801b31b732c0257b8ba99c538cbbfa4",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "Trello",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/members/me/boards?key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/members/me/boards?key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -25,11 +73,13 @@
           "query": [
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{apiKey}}",
+              "uuid": "6d0014fa-34aa-45f3-aa00-3f058a9daf61"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{token}}",
+              "uuid": "06ed51c0-af09-483b-b97c-8eb316f24548"
             }
           ]
         }
@@ -38,12 +88,40 @@
     },
     {
       "name": "Get a board",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "98340ab6-77e5-4cac-b3be-7367d7493eb5",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "857ec21e-37e5-4a4b-92ab-828482c680b9",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "18081bf9-d86d-4f9f-9579-6ffb9dd10ac1",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/boards/:id?key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/boards/:id?key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -55,12 +133,12 @@
           "query": [
             {
               "key": "key",
-              "value": "{{API Key}}",
+              "value": "{{apiKey}}",
               "uuid": "e63ba7d0-246e-4141-9443-16d011e8b5c4"
             },
             {
               "key": "token",
-              "value": "{{Token}}",
+              "value": "{{token}}",
               "uuid": "e2e6a878-2b09-437e-b3e5-4ba2f4fe4e37"
             }
           ],
@@ -76,12 +154,40 @@
     },
     {
       "name": "Create a board",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "9cb0073e-d624-4ec8-a1d3-0bece11c8924",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "94d87632-b712-492f-8570-200408799b42",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "6a563918-7ef3-439c-9056-e98923ffb903",
       "request": {
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/boards?name=My_First_Board&key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/boards?name=My_First_Board&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -92,15 +198,18 @@
           "query": [
             {
               "key": "name",
-              "value": "My_First_Board"
+              "value": "My_First_Board",
+              "uuid": "a0e53fae-27ab-4756-86f5-c3e85a748562"
             },
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{apiKey}}",
+              "uuid": "fa3e969d-eda8-4d66-8776-9c3ea55f482b"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{token}}",
+              "uuid": "3037882c-cc05-4de1-ad8f-f623a90fa428"
             }
           ]
         }
@@ -109,12 +218,40 @@
     },
     {
       "name": "Create a TODO list",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "54dcec8f-7084-49e6-83bd-ecbe27767257",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "bc28bc9b-89fa-4214-b2dd-1aa663d00613",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "5c327c43-9990-49e7-b702-1252321c0e8e",
       "request": {
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/lists?name=TODO&idBoard=695ece4f1be059f74faf0378&key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/lists?name=TODO&idBoard=695ece4f1be059f74faf0378&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -125,19 +262,23 @@
           "query": [
             {
               "key": "name",
-              "value": "TODO"
+              "value": "TODO",
+              "uuid": "ccab8534-1a51-4291-a479-2658e172883c"
             },
             {
               "key": "idBoard",
-              "value": "695ece4f1be059f74faf0378"
+              "value": "695ece4f1be059f74faf0378",
+              "uuid": "e904e43b-2d12-43f0-8e29-c43db37d6872"
             },
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{apiKey}}",
+              "uuid": "9d152c7f-0de2-41c8-b765-7966a10dde29"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{token}}",
+              "uuid": "8b8d7f7f-cb72-4f7e-9cfd-8c832b143c49"
             }
           ]
         }
@@ -146,12 +287,40 @@
     },
     {
       "name": "Create a DONE list",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "a8d7ffa1-eba7-4c5c-9570-7692edafe61d",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "3cc797f1-2ef4-4b1d-bf53-8289c11840f0",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "5d6323a8-4af8-412b-9f9b-1002b43020fd",
       "request": {
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/lists?name=DONE&idBoard=695ece4f1be059f74faf0378&key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/lists?name=DONE&idBoard=695ece4f1be059f74faf0378&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -162,19 +331,23 @@
           "query": [
             {
               "key": "name",
-              "value": "DONE"
+              "value": "DONE",
+              "uuid": "a6c17f92-03ed-4770-88a2-39ada456ad41"
             },
             {
               "key": "idBoard",
-              "value": "695ece4f1be059f74faf0378"
+              "value": "695ece4f1be059f74faf0378",
+              "uuid": "3dfe6908-e198-4af5-a568-55e0c42eca6a"
             },
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{apiKey}}",
+              "uuid": "df81a477-9c2b-451c-b9f5-6673d5092ba6"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{token}}",
+              "uuid": "ebdd17f6-2d77-400b-bbe9-e1869bd65f22"
             }
           ]
         }
@@ -183,12 +356,40 @@
     },
     {
       "name": "Create a card",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "bb3424b0-08a3-4f82-8006-3763602bc91d",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "4f4997b8-2ff0-4030-ae06-acad39b6ff53",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "e0f7d1fe-6db3-45e4-b89e-d8be50637979",
       "request": {
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/cards?name=Sign-up for Trello&idList=695fe0c0ff368747201cceae&key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/cards?name=Sign-up for Trello&idList=695fe0c0ff368747201cceae&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -209,12 +410,12 @@
             },
             {
               "key": "key",
-              "value": "{{API Key}}",
+              "value": "{{apiKey}}",
               "uuid": "c151b46e-6102-4ee1-af81-294c72bc18de"
             },
             {
               "key": "token",
-              "value": "{{Token}}",
+              "value": "{{token}}",
               "uuid": "33a9bb1f-80a8-4fb4-8fb3-e3e7e30db1d6"
             }
           ]
@@ -224,6 +425,34 @@
     },
     {
       "name": "Update a card",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "61fb2f93-9bdd-4792-b6a8-c3c5ab1bbbc7",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f0d7074a-bc2c-426c-87d5-61b05617278c",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "e8c9f51c-7ebc-4c62-9ed9-84313894bb44",
       "request": {
         "method": "PUT",
@@ -234,7 +463,7 @@
           }
         ],
         "url": {
-          "raw": "{{baseUrl}}/1/cards/696009cf3f071e066cb6949c?idList=69600931cd063c7120e75096&key=%7B%7BAPI%20Key%7D%7D&token=%7B%7BToken%7D%7D",
+          "raw": "{{baseUrl}}/1/cards/696009cf3f071e066cb6949c?idList=69600931cd063c7120e75096&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -246,15 +475,18 @@
           "query": [
             {
               "key": "idList",
-              "value": "69600931cd063c7120e75096"
+              "value": "69600931cd063c7120e75096",
+              "uuid": "622c0418-ead7-4b6b-947a-58ed4f095f06"
             },
             {
               "key": "key",
-              "value": "{{API Key}}"
+              "value": "{{apiKey}}",
+              "uuid": "a969ea08-f5ee-4a4f-a883-80e632c45add"
             },
             {
               "key": "token",
-              "value": "{{Token}}"
+              "value": "{{token}}",
+              "uuid": "6d795c9a-174b-4d0c-98ac-b81d37ae6515"
             }
           ]
         }
@@ -263,12 +495,40 @@
     },
     {
       "name": "Delete a board",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1f0cb00b-3d4a-45ab-ad88-49d85a05cc81",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "5291addc-fd4d-4f85-beac-75b702a81ce5",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
       "id": "caf587b4-a512-4c7c-b3cd-f067c10820e8",
       "request": {
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/boards/:id?key={{API Key}}&token={{Token}}",
+          "raw": "{{baseUrl}}/1/boards/:id?key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -280,12 +540,12 @@
           "query": [
             {
               "key": "key",
-              "value": "{{API Key}}",
+              "value": "{{apiKey}}",
               "uuid": "6fbc4489-8b8a-4909-97a3-5508a0b85a7d"
             },
             {
               "key": "token",
-              "value": "{{Token}}",
+              "value": "{{token}}",
               "uuid": "3611168c-6358-4cf3-8f7b-a1eb5177299d"
             }
           ],
@@ -300,35 +560,20 @@
       "response": []
     }
   ],
-  "auth": {
-    "type": "apikey",
-    "apikey": [
-      {
-        "key": "value",
-        "value": "285b98af17d05c490f9c632ccf889fb9",
-        "type": "string"
-      },
-      {
-        "key": "key",
-        "value": "Trello",
-        "type": "string"
-      }
-    ]
-  },
   "variable": [
     {
-      "id": "edce5cd6-59c7-4171-bc4e-882fbd6ec12f",
+      "id": "aae3fba3-8409-4eb8-8b0e-b8ceabc275ce",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "e7b459c7-30b1-41e6-8e75-6b84ab8b5891",
-      "key": "API Key",
+      "id": "5e77d5d3-3819-42d1-b88e-647260c8b193",
+      "key": "apiKey",
       "value": ""
     },
     {
-      "id": "3dfb3380-6f4a-499e-a333-2c76a37bfb08",
-      "key": "Token",
+      "id": "afa5e63b-c8c4-4b69-8913-9295ba6f50c1",
+      "key": "token",
       "value": ""
     }
   ]
