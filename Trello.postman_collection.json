@@ -181,6 +181,12 @@
           "script": {
             "id": "9cb0073e-d624-4ec8-a1d3-0bece11c8924",
             "exec": [
+              "let boardNumber = pm.collectionVariables.get(\"boardNumber\");",
+              "if (isNaN(boardNumber) || (boardNumber == 0)) {",
+              "    boardNumber = 0;",
+              "}",
+              "boardNumber++;",
+              "pm.collectionVariables.set(\"boardNumber\", boardNumber);",
               ""
             ],
             "type": "text/javascript",
@@ -202,7 +208,7 @@
               "pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);",
               "",
               "pm.test(\"Board created successfully\", () => {",
-              "    pm.expect(jsonData.name).to.eql(\"My_First_Board\");",
+              "    pm.expect(jsonData.name).to.eql(\"Learning Postman \" + pm.collectionVariables.get(\"boardNumber\"));",
               "});",
               "",
               "pm.test(\"Board is open\", () => {",
@@ -229,7 +235,7 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/boards?name=My_First_Board&key={{apiKey}}&token={{token}}",
+          "raw": "{{baseUrl}}/1/boards?name=Learning Postman {{boardNumber}}&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -240,7 +246,7 @@
           "query": [
             {
               "key": "name",
-              "value": "My_First_Board",
+              "value": "Learning Postman {{boardNumber}}",
               "uuid": "a0e53fae-27ab-4756-86f5-c3e85a748562"
             },
             {
@@ -636,43 +642,48 @@
   },
   "variable": [
     {
-      "id": "721e2b1e-a353-4a14-8ebc-d7987a3f028e",
+      "id": "4c76ef17-8ede-4a9c-931e-5145f290fdd3",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "4327e9c3-8c27-491e-af81-dc81728d2370",
+      "id": "6e8f478a-c6f7-4589-86cf-d49b1d38ed71",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "cd3d1796-05ff-469f-b89a-c16e5c4b16a5",
+      "id": "de4a5fae-4bb1-43fb-ad64-7dd73020c11f",
       "key": "token",
       "value": ""
     },
     {
-      "id": "42891d13-5378-4fb2-a04e-ab38389914cf",
+      "id": "437eb7c3-5e96-4f45-ac9c-5bf97b2564e0",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "2ae0d594-c8e9-4851-a22d-643e2ebbaf4c",
+      "id": "6a1273cb-6abe-4f8e-8b11-7fc1a41f00c0",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "0d95da17-0530-4991-a91a-702bc928e573",
+      "id": "f4c19d65-666f-42ce-94f2-18376782b19f",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "832855cd-47c1-4692-8296-0cfdb7ffb21e",
+      "id": "ce75335a-cf77-424a-9cc3-ae062151c6fb",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "f86e1569-4f55-476f-a902-38dc0a2f5f3c",
+      "id": "7523948a-2909-441c-a3ab-b97d5915f7bb",
       "key": "existingBoardIds",
+      "value": ""
+    },
+    {
+      "id": "1d93b3f2-8ef5-4dff-a07a-50a0bc286d22",
+      "key": "boardNumber",
       "value": ""
     }
   ]
