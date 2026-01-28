@@ -446,7 +446,24 @@
               "",
               "const jsonData = pm.response.json();",
               "",
-              "pm.collectionVariables.set(\"cardId\", jsonData.id);"
+              "pm.collectionVariables.set(\"cardId\", jsonData.id);",
+              "",
+              "pm.test(\"Card is created\", () => {",
+              "    pm.expect(jsonData.name).to.eql(\"Sign-up for Trello\");",
+              "});",
+              "",
+              "pm.test(\"Card is in the right list\", () => {",
+              "    pm.expect(jsonData.idList).to.eql(pm.collectionVariables.get(\"listId\"));",
+              "});",
+              "",
+              "pm.test(\"Card is in the right board\", () => {",
+              "    pm.expect(jsonData.idBoard).to.eql(pm.collectionVariables.get(\"boardId\"));",
+              "});",
+              "",
+              "pm.test(\"There are no attachments to the list\", () => {",
+              "    pm.expect(jsonData.attachments).to.be.empty;",
+              "})",
+              ""
             ],
             "type": "text/javascript",
             "packages": {},
@@ -667,47 +684,47 @@
   },
   "variable": [
     {
-      "id": "ddb7e462-8986-4e60-aab6-856d18e6f1fb",
+      "id": "e8bed165-c317-4476-9250-f7d2b23c1c02",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "f330b046-1f67-4b85-9fb6-a168d7e8dfcf",
+      "id": "bd6ea034-4363-4b91-99e0-301f01038ffa",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "c82cee38-d5a3-4e1d-acb7-c9ec54821150",
+      "id": "44a9dc8c-56bc-4b69-bddc-b97c918a60ca",
       "key": "token",
       "value": ""
     },
     {
-      "id": "1328bdc0-4f85-48f8-b15f-c1d2882f272d",
+      "id": "80434162-41ef-4df1-96d2-ccaece583965",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "d69e1dbc-e81e-4d63-8581-bf38129c9201",
+      "id": "7e7115cf-2abe-4536-80b5-5da7b47451bd",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "0ebece54-7ef3-4d8f-8703-cc3311bff4c0",
+      "id": "4574a919-d3d4-4439-a5e8-607ebec3ba53",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "f8eb83cf-8aa3-49d0-9c77-4374174c8dcf",
+      "id": "e7cb51d9-02f5-4f23-af95-d197a770fda6",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "25ac37de-ad45-4c20-876f-6ec30f817964",
+      "id": "08f8e5bd-2291-4924-9683-dcf9a945dce2",
       "key": "existingBoardIds",
       "value": ""
     },
     {
-      "id": "6dfaf54e-38e9-4f24-8d72-a629f0181baa",
+      "id": "a3e58177-1042-44d1-9974-6f771ef241f8",
       "key": "boardNumber",
       "value": ""
     }
