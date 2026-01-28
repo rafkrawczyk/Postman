@@ -462,6 +462,7 @@
               "",
               "pm.test(\"There are no attachments to the list\", () => {",
               "    pm.expect(jsonData.attachments).to.be.empty;",
+              "    pm.expect(jsonData.badges.attachmentsByType.trello.card).to.eql(0);",
               "})",
               ""
             ],
@@ -684,47 +685,47 @@
   },
   "variable": [
     {
-      "id": "e8bed165-c317-4476-9250-f7d2b23c1c02",
+      "id": "2479fb6e-9e5b-43bb-8f11-a7f1508b5336",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "bd6ea034-4363-4b91-99e0-301f01038ffa",
+      "id": "63b01621-f647-47ba-833b-87abd792fd6a",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "44a9dc8c-56bc-4b69-bddc-b97c918a60ca",
+      "id": "189e15fa-a580-406c-a9e3-88f8fcf05925",
       "key": "token",
       "value": ""
     },
     {
-      "id": "80434162-41ef-4df1-96d2-ccaece583965",
+      "id": "68a20a9e-caad-45cd-a9d6-cdc8b62c91d4",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "7e7115cf-2abe-4536-80b5-5da7b47451bd",
+      "id": "dbfdf184-bed8-4d6c-a24f-385ae3421aa1",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "4574a919-d3d4-4439-a5e8-607ebec3ba53",
+      "id": "f43b4d96-e9d8-49f2-b456-2c04aed36d61",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "e7cb51d9-02f5-4f23-af95-d197a770fda6",
+      "id": "67c954dc-6f67-4dbc-a7a3-351bfd169dc6",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "08f8e5bd-2291-4924-9683-dcf9a945dce2",
+      "id": "5c18f743-abf7-4c25-a625-2a113a07ec93",
       "key": "existingBoardIds",
       "value": ""
     },
     {
-      "id": "a3e58177-1042-44d1-9974-6f771ef241f8",
+      "id": "9c3e78c0-d429-4e3a-a895-4bf7bb6b1420",
       "key": "boardNumber",
       "value": ""
     }
