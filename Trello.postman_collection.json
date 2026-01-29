@@ -202,23 +202,26 @@
               "    pm.response.to.have.status(200);",
               "});",
               "",
-              "const jsonData = pm.response.json();",
-              "",
-              "pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);",
+              "let jsonData;",
               "",
               "pm.test(\"Board created successfully\", () => {",
+              "    jsonData = pm.response.json();",
               "    pm.expect(jsonData.name).to.eql(\"Learning Postman \" + pm.collectionVariables.get(\"boardNumber\"));",
+              "    pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);",
               "});",
               "",
               "pm.test(\"Board is open\", () => {",
+              "    jsonData = pm.response.json();",
               "    pm.expect(jsonData.closed).to.be.false;",
               "});",
               "",
               "pm.test(\"Board is private\", () => {",
+              "    jsonData = pm.response.json();",
               "    pm.expect(jsonData.prefs.permissionLevel).to.eql(\"private\");",
               "});",
               "",
               "pm.test(\"Calendar view is disabled\", () => {",
+              "    jsonData = pm.response.json();    ",
               "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\")).to.be.an(\"object\");",
               "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\").enabled).to.be.false;",
               "});"
@@ -695,57 +698,57 @@
   },
   "variable": [
     {
-      "id": "7f6da09c-88bb-4d26-89ed-690beb16d37b",
+      "id": "244d2f34-c9f5-4512-92fb-8dc8f66b785b",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "236d07ea-a3c7-4264-902e-6b8384393d89",
+      "id": "0d1294bd-818a-48a4-831f-dea6c05de4fd",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "e3cef7e8-c4fd-4d2e-bc4c-d03149fe8be6",
+      "id": "b0f189e1-857b-4970-9e5c-1015ac4ffce5",
       "key": "token",
       "value": ""
     },
     {
-      "id": "716f3133-c0b5-439c-83d7-1e17569064e6",
+      "id": "422b4441-df4e-4ef6-bae4-48e95f929cd3",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "79c0628c-1c45-4114-ae40-d5628294017c",
+      "id": "179d1f39-416f-4f22-a0f4-936745cac613",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "061ed4b3-353c-4acb-8c47-1262584884a1",
+      "id": "abb0165c-e5d4-4d52-8516-5c54202e4836",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "beaec40e-fe3d-497b-8b6d-d68369184e90",
+      "id": "6faf975b-3697-4e27-b2ea-8d7440132c80",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "71faca74-6876-4dbd-a519-0c5376f66da6",
+      "id": "c1f2cbb0-dd96-495d-85d3-76578899cbad",
       "key": "existingBoardIds",
       "value": ""
     },
     {
-      "id": "768fabcc-c462-4567-8346-798bd3cc57fb",
+      "id": "a928c337-b5fc-4c01-8f05-f1a69b8aedb1",
       "key": "boardNumber",
       "value": ""
     },
     {
-      "id": "d1608cb6-4a14-40f1-be6d-a723e0783ee2",
+      "id": "158ca49f-3e01-492a-8a7a-5dc1aea43780",
       "key": "doneListId",
       "value": ""
     },
     {
-      "id": "0c46e7d8-5a91-42cc-981f-1b8ae180d354",
+      "id": "24fadaba-1609-4fa1-a1ed-829538e5ab53",
       "key": "toDoListId",
       "value": ""
     }
