@@ -62,11 +62,10 @@
               "});",
               "",
               "const jsonData = pm.response.json();",
-              "console.log(jsonData.length);",
+              "",
               "pm.collectionVariables.set(\"boardId\", jsonData[0].id);",
               "pm.collectionVariables.set(\"boardIdToDelete\", jsonData[0].id);",
               "",
-              "console.log(jsonData.map(board => board.id));",
               "const existingBoardIds = jsonData.map(board => board.id);",
               "pm.collectionVariables.set(\"existingBoardIds\", existingBoardIds)"
             ],
@@ -696,57 +695,57 @@
   },
   "variable": [
     {
-      "id": "8cf43a6a-2d9f-4962-a6fa-baaba368f955",
+      "id": "7f6da09c-88bb-4d26-89ed-690beb16d37b",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "ff2d42ab-54a6-466c-8d57-b20a0ec97212",
+      "id": "236d07ea-a3c7-4264-902e-6b8384393d89",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "4a703e0a-ab2f-445d-ace3-40a993301e95",
+      "id": "e3cef7e8-c4fd-4d2e-bc4c-d03149fe8be6",
       "key": "token",
       "value": ""
     },
     {
-      "id": "ba6d668b-eb99-4948-897d-d4eec398adc2",
+      "id": "716f3133-c0b5-439c-83d7-1e17569064e6",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "ea682d76-a021-44ac-a80f-6734ae52f61c",
+      "id": "79c0628c-1c45-4114-ae40-d5628294017c",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "17db6308-17f3-46b6-9c04-43a7758837ec",
+      "id": "061ed4b3-353c-4acb-8c47-1262584884a1",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "243ae1d2-bd43-4875-be18-ef0e124b203b",
+      "id": "beaec40e-fe3d-497b-8b6d-d68369184e90",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "bb64ea55-b421-4610-beb9-64123e6077a7",
+      "id": "71faca74-6876-4dbd-a519-0c5376f66da6",
       "key": "existingBoardIds",
       "value": ""
     },
     {
-      "id": "df769bc2-ffc0-481a-94e0-94901e368b0b",
+      "id": "768fabcc-c462-4567-8346-798bd3cc57fb",
       "key": "boardNumber",
       "value": ""
     },
     {
-      "id": "1128b2a8-acc1-4c9e-abbc-af3ae290d75d",
+      "id": "d1608cb6-4a14-40f1-be6d-a723e0783ee2",
       "key": "doneListId",
       "value": ""
     },
     {
-      "id": "bf759b2b-f7e0-427c-ab6b-453fe901cce5",
+      "id": "0c46e7d8-5a91-42cc-981f-1b8ae180d354",
       "key": "toDoListId",
       "value": ""
     }
