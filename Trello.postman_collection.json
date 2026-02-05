@@ -38,13 +38,19 @@
       "response": []
     },
     {
-      "name": "Get all boards",
+      "name": "Create a board",
       "event": [
         {
           "listen": "prerequest",
           "script": {
-            "id": "0ef262c5-6e1f-471e-a5d3-cf6e36f56419",
+            "id": "9cb0073e-d624-4ec8-a1d3-0bece11c8924",
             "exec": [
+              "let boardNumber = pm.collectionVariables.get(\"boardNumber\");",
+              "if (isNaN(boardNumber) || (boardNumber == 0)) {",
+              "    boardNumber = 0;",
+              "}",
+              "boardNumber++;",
+              "pm.collectionVariables.set(\"boardNumber\", boardNumber);",
               ""
             ],
             "type": "text/javascript",
@@ -55,19 +61,35 @@
         {
           "listen": "test",
           "script": {
-            "id": "94fbebc7-3c2a-4809-a8d1-6b4c7800dc87",
+            "id": "94d87632-b712-492f-8570-200408799b42",
             "exec": [
               "pm.test(\"Status code is 200\", () => {",
               "    pm.response.to.have.status(200);",
               "});",
               "",
-              "const jsonData = pm.response.json();",
+              "let jsonData;",
               "",
-              "pm.collectionVariables.set(\"boardId\", jsonData[0].id);",
-              "pm.collectionVariables.set(\"boardIdToDelete\", jsonData[0].id);",
+              "pm.test(\"Board created successfully\", () => {",
+              "    jsonData = pm.response.json();",
+              "    pm.expect(jsonData.name).to.eql(\"Learning Postman \" + pm.collectionVariables.get(\"boardNumber\"));",
+              "    pm.collectionVariables.set(\"boardId\", jsonData.id);",
+              "});",
               "",
-              "const existingBoardIds = jsonData.map(board => board.id);",
-              "pm.collectionVariables.set(\"existingBoardIds\", existingBoardIds)"
+              "pm.test(\"Board is open\", () => {",
+              "    jsonData = pm.response.json();",
+              "    pm.expect(jsonData.closed).to.be.false;",
+              "});",
+              "",
+              "pm.test(\"Board is private\", () => {",
+              "    jsonData = pm.response.json();",
+              "    pm.expect(jsonData.prefs.permissionLevel).to.eql(\"private\");",
+              "});",
+              "",
+              "pm.test(\"Calendar view is disabled\", () => {",
+              "    jsonData = pm.response.json();    ",
+              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\")).to.be.an(\"object\");",
+              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\").enabled).to.be.false;",
+              "});"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -75,31 +97,34 @@
           }
         }
       ],
-      "id": "1765a88f-7c76-4261-96b5-5c93bce80601",
+      "id": "6a563918-7ef3-439c-9056-e98923ffb903",
       "request": {
-        "method": "GET",
+        "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/1/members/me/boards?key={{apiKey}}&token={{token}}",
+          "raw": "{{baseUrl}}/1/boards?name=Learning Postman {{boardNumber}}&key={{apiKey}}&token={{token}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "1",
-            "members",
-            "me",
             "boards"
           ],
           "query": [
             {
+              "key": "name",
+              "value": "Learning Postman {{boardNumber}}",
+              "uuid": "a0e53fae-27ab-4756-86f5-c3e85a748562"
+            },
+            {
               "key": "key",
               "value": "{{apiKey}}",
-              "uuid": "6d0014fa-34aa-45f3-aa00-3f058a9daf61"
+              "uuid": "fa3e969d-eda8-4d66-8776-9c3ea55f482b"
             },
             {
               "key": "token",
               "value": "{{token}}",
-              "uuid": "06ed51c0-af09-483b-b97c-8eb316f24548"
+              "uuid": "3037882c-cc05-4de1-ad8f-f623a90fa428"
             }
           ]
         }
@@ -166,100 +191,6 @@
             {
               "key": "id",
               "value": "{{boardId}}"
-            }
-          ]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "Create a board",
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "9cb0073e-d624-4ec8-a1d3-0bece11c8924",
-            "exec": [
-              "let boardNumber = pm.collectionVariables.get(\"boardNumber\");",
-              "if (isNaN(boardNumber) || (boardNumber == 0)) {",
-              "    boardNumber = 0;",
-              "}",
-              "boardNumber++;",
-              "pm.collectionVariables.set(\"boardNumber\", boardNumber);",
-              ""
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "94d87632-b712-492f-8570-200408799b42",
-            "exec": [
-              "pm.test(\"Status code is 200\", () => {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "let jsonData;",
-              "",
-              "pm.test(\"Board created successfully\", () => {",
-              "    jsonData = pm.response.json();",
-              "    pm.expect(jsonData.name).to.eql(\"Learning Postman \" + pm.collectionVariables.get(\"boardNumber\"));",
-              "    pm.collectionVariables.set(\"boardIdToDelete\", jsonData.id);",
-              "});",
-              "",
-              "pm.test(\"Board is open\", () => {",
-              "    jsonData = pm.response.json();",
-              "    pm.expect(jsonData.closed).to.be.false;",
-              "});",
-              "",
-              "pm.test(\"Board is private\", () => {",
-              "    jsonData = pm.response.json();",
-              "    pm.expect(jsonData.prefs.permissionLevel).to.eql(\"private\");",
-              "});",
-              "",
-              "pm.test(\"Calendar view is disabled\", () => {",
-              "    jsonData = pm.response.json();    ",
-              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\")).to.be.an(\"object\");",
-              "    pm.expect(jsonData.prefs.switcherViews.find(view => view.viewType === \"Calendar\").enabled).to.be.false;",
-              "});"
-            ],
-            "type": "text/javascript",
-            "packages": {},
-            "requests": {}
-          }
-        }
-      ],
-      "id": "6a563918-7ef3-439c-9056-e98923ffb903",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/1/boards?name=Learning Postman {{boardNumber}}&key={{apiKey}}&token={{token}}",
-          "host": [
-            "{{baseUrl}}"
-          ],
-          "path": [
-            "1",
-            "boards"
-          ],
-          "query": [
-            {
-              "key": "name",
-              "value": "Learning Postman {{boardNumber}}",
-              "uuid": "a0e53fae-27ab-4756-86f5-c3e85a748562"
-            },
-            {
-              "key": "key",
-              "value": "{{apiKey}}",
-              "uuid": "fa3e969d-eda8-4d66-8776-9c3ea55f482b"
-            },
-            {
-              "key": "token",
-              "value": "{{token}}",
-              "uuid": "3037882c-cc05-4de1-ad8f-f623a90fa428"
             }
           ]
         }
@@ -675,7 +606,82 @@
           "variable": [
             {
               "key": "id",
-              "value": "{{boardIdToDelete}}"
+              "value": "{{boardId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get all boards",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "0ef262c5-6e1f-471e-a5d3-cf6e36f56419",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "94fbebc7-3c2a-4809-a8d1-6b4c7800dc87",
+            "exec": [
+              "pm.test(\"Status code is 200\", () => {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const jsonData = pm.response.json();",
+              "",
+              "if (jsonData && jsonData.length > 0) {",
+              "    pm.collectionVariables.set(\"boardId\", jsonData[0].id);",
+              "",
+              "    const existingBoardIds = jsonData.map(board => board.id);",
+              "    ",
+              "    pm.collectionVariables.set(\"existingBoardIds\", existingBoardIds)",
+              "    pm.execution.setNextRequest(\"Delete a board\");",
+              "} else {",
+              "    console.log(\"No boards found, stopping execution.\");",
+              "    pm.execution.setNextRequest(null);",
+              "}"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "id": "1765a88f-7c76-4261-96b5-5c93bce80601",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/1/members/me/boards?key={{apiKey}}&token={{token}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "1",
+            "members",
+            "me",
+            "boards"
+          ],
+          "query": [
+            {
+              "key": "key",
+              "value": "{{apiKey}}",
+              "uuid": "6d0014fa-34aa-45f3-aa00-3f058a9daf61"
+            },
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "uuid": "06ed51c0-af09-483b-b97c-8eb316f24548"
             }
           ]
         }
@@ -705,57 +711,57 @@
   },
   "variable": [
     {
-      "id": "764d1109-1b68-4d09-88d2-54adf291c88f",
+      "id": "853a8011-1330-4a74-ae3f-0a7d79c3e3e3",
       "key": "baseUrl",
       "value": ""
     },
     {
-      "id": "abb7384e-4e84-4d80-a06a-b346cdd0e7cf",
+      "id": "f9ace24c-f4aa-455d-97fe-5ebb1bd6b49d",
       "key": "apiKey",
       "value": ""
     },
     {
-      "id": "4e273861-cc64-48aa-ac86-f7b1e69210fb",
+      "id": "f9a14040-d478-4e40-bca9-a2ae5bb8a90d",
       "key": "token",
       "value": ""
     },
     {
-      "id": "338c8729-0d50-428d-9a84-39299e0c677c",
+      "id": "554ac4f0-5036-40ef-ab13-c7d8ae61234e",
       "key": "boardId",
       "value": ""
     },
     {
-      "id": "751908f6-b11a-4bae-8fc0-dbaed6e2c050",
+      "id": "5e31e0bc-ba0a-445f-869c-82769c342e8e",
       "key": "listId",
       "value": ""
     },
     {
-      "id": "4bdc11a2-0202-408b-ad3e-5a806d6e1f0c",
+      "id": "988e12ef-8e81-4c2f-a241-60e06135e2a9",
       "key": "boardIdToDelete",
       "value": ""
     },
     {
-      "id": "4ca1cfc9-be01-4895-a99a-01e077589098",
+      "id": "ae11a5a6-4cff-4bd0-a5ff-451b6f0d2130",
       "key": "cardId",
       "value": ""
     },
     {
-      "id": "7b71eb1e-8e33-4c5a-9437-9abe2875d203",
+      "id": "d92bb9c8-b9ed-4e96-938b-21115e3bd676",
       "key": "existingBoardIds",
       "value": ""
     },
     {
-      "id": "c7a68d20-4b13-4dbe-aee3-805cbf18e2a5",
+      "id": "9989c962-52e3-408b-8177-d089ee56f1d5",
       "key": "boardNumber",
       "value": ""
     },
     {
-      "id": "6678bfdf-124a-47b8-b1b8-aea9baafce40",
+      "id": "8cdad287-2ab5-49f2-ad0d-6aa376609fd1",
       "key": "doneListId",
       "value": ""
     },
     {
-      "id": "c5f41e96-0772-4374-bc1f-e8a89a06f7e3",
+      "id": "08a829e8-c885-4665-a218-d59e2fe0fc66",
       "key": "toDoListId",
       "value": ""
     }
